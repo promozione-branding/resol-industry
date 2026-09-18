@@ -453,7 +453,7 @@ export default function HeroSection() {
           font-semibold
           leading-[1.02]
           tracking-[-0.04em]
-          text-black
+          text-[#0d2461]
           sm:text-6xl
           lg:text-[68px]
           xl:text-[76px]
