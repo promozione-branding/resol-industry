@@ -6,6 +6,7 @@ import IndustriesSection from '@/component/Industry'
 import Navbar from '@/component/Navbar'
 import OurCategoriesSection from '@/component/OurCategoriesSection'
 import Hero3 from '@/component/Product'
+import TeamSection from '@/component/TeamSection'
 import Cta from '@/component/Video'
 import React from 'react'
 
@@ -20,6 +21,7 @@ export default function Home() {
       <Hero3 />
       <Cta />
       <IndustriesSection />
+      <TeamSection />
 
       <Footer />
     </div>
