@@ -4,6 +4,7 @@ import CTASection from '@/component/CTASection'
 import FAQSection from '@/component/FAQSection'
 import Footer from '@/component/Footer'
 import HeroSection from '@/component/Hero'
+import HowWeWork from '@/component/Howweprocess'
 import IndustriesSection from '@/component/Industry'
 import Navbar from '@/component/Navbar'
 import OurCategoriesSection from '@/component/OurCategoriesSection'
@@ -25,6 +26,7 @@ export default function Home() {
       <Cta />
       <IndustriesSection />
       <TeamSection />
+      <HowWeWork />
       <FAQSection />
       <Footer />
     </div>

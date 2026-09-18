@@ -56,43 +56,76 @@ export default function FAQSection() {
                         {/* Decorative SVG */}
                         <div className="relative mx-auto flex aspect-square max-w-[430px] items-center justify-center">
 
-                            {/* Outer circles */}
+                            {/* Outer rotating ring */}
                             <motion.div
                                 animate={{ rotate: 360 }}
                                 transition={{
-                                    duration: 35,
+                                    duration: 30,
                                     repeat: Infinity,
-                                    ease: 'linear',
+                                    ease: "linear",
                                 }}
-                                className="absolute inset-5 rounded-full border border-[#c99618]/20"
+                                className="absolute inset-4 rounded-full border border-[#c99618]/20"
                             />
 
+                            {/* Reverse rotating dashed ring */}
                             <motion.div
                                 animate={{ rotate: -360 }}
                                 transition={{
-                                    duration: 45,
+                                    duration: 22,
                                     repeat: Infinity,
-                                    ease: 'linear',
+                                    ease: "linear",
                                 }}
-                                className="absolute inset-16 rounded-full border border-dashed border-[#c99618]/25"
+                                className="absolute inset-12 rounded-full border border-dashed border-[#c99618]/25"
                             />
 
-                            {/* Decorative SVG */}
+                            {/* Slow third ring */}
+                            <motion.div
+                                animate={{
+                                    rotate: 360,
+                                    scale: [1, 1.02, 1],
+                                }}
+                                transition={{
+                                    rotate: {
+                                        duration: 50,
+                                        repeat: Infinity,
+                                        ease: "linear",
+                                    },
+                                    scale: {
+                                        duration: 5,
+                                        repeat: Infinity,
+                                        ease: "easeInOut",
+                                    },
+                                }}
+                                className="absolute inset-[70px] rounded-full border border-[#c99618]/10"
+                            />
+
+                            {/* Main SVG */}
                             <svg
                                 viewBox="0 0 500 500"
                                 className="absolute inset-0 h-full w-full"
                                 fill="none"
                             >
-                                <circle
+                                {/* Main circle */}
+                                <motion.circle
                                     cx="250"
                                     cy="250"
                                     r="185"
                                     stroke="#c99618"
                                     strokeOpacity="0.12"
                                     strokeWidth="1"
+                                    animate={{ rotate: 360 }}
+                                    transition={{
+                                        duration: 40,
+                                        repeat: Infinity,
+                                        ease: "linear",
+                                    }}
+                                    style={{
+                                        transformOrigin: "250px 250px",
+                                    }}
                                 />
 
-                                <circle
+                                {/* Dashed inner circle */}
+                                <motion.circle
                                     cx="250"
                                     cy="250"
                                     r="135"
@@ -100,15 +133,52 @@ export default function FAQSection() {
                                     strokeOpacity="0.18"
                                     strokeWidth="1"
                                     strokeDasharray="4 8"
+                                    animate={{
+                                        rotate: -360,
+                                    }}
+                                    transition={{
+                                        duration: 25,
+                                        repeat: Infinity,
+                                        ease: "linear",
+                                    }}
+                                    style={{
+                                        transformOrigin: "250px 250px",
+                                    }}
                                 />
 
-                                <path
-                                    d="M250 65V435M65 250H435"
+                                {/* Vertical moving line */}
+                                <motion.path
+                                    d="M250 65V435"
                                     stroke="#c99618"
                                     strokeOpacity="0.08"
                                     strokeWidth="1"
+                                    animate={{
+                                        opacity: [0.25, 0.8, 0.25],
+                                    }}
+                                    transition={{
+                                        duration: 3,
+                                        repeat: Infinity,
+                                        ease: "easeInOut",
+                                    }}
                                 />
 
+                                {/* Horizontal moving line */}
+                                <motion.path
+                                    d="M65 250H435"
+                                    stroke="#c99618"
+                                    strokeOpacity="0.08"
+                                    strokeWidth="1"
+                                    animate={{
+                                        opacity: [0.8, 0.25, 0.8],
+                                    }}
+                                    transition={{
+                                        duration: 3,
+                                        repeat: Infinity,
+                                        ease: "easeInOut",
+                                    }}
+                                />
+
+                                {/* Diagonal lines */}
                                 <path
                                     d="M119 119L381 381M381 119L119 381"
                                     stroke="#c99618"
@@ -116,7 +186,8 @@ export default function FAQSection() {
                                     strokeWidth="1"
                                 />
 
-                                <circle
+                                {/* Pulsing center */}
+                                <motion.circle
                                     cx="250"
                                     cy="250"
                                     r="72"
@@ -125,82 +196,179 @@ export default function FAQSection() {
                                     stroke="#c99618"
                                     strokeOpacity="0.35"
                                     strokeWidth="1.5"
+                                    animate={{
+                                        r: [72, 78, 72],
+                                        strokeOpacity: [0.25, 0.55, 0.25],
+                                    }}
+                                    transition={{
+                                        duration: 4,
+                                        repeat: Infinity,
+                                        ease: "easeInOut",
+                                    }}
                                 />
 
-                                <circle
+                                {/* Center glow */}
+                                <motion.circle
+                                    cx="250"
+                                    cy="250"
+                                    r="20"
+                                    fill="#c99618"
+                                    fillOpacity="0.08"
+                                    animate={{
+                                        scale: [1, 1.6, 1],
+                                        opacity: [0.3, 0.7, 0.3],
+                                    }}
+                                    transition={{
+                                        duration: 2.5,
+                                        repeat: Infinity,
+                                        ease: "easeInOut",
+                                    }}
+                                    style={{
+                                        transformOrigin: "250px 250px",
+                                    }}
+                                />
+
+                                {/* Center point */}
+                                <motion.circle
                                     cx="250"
                                     cy="250"
                                     r="8"
                                     fill="#c99618"
+                                    animate={{
+                                        r: [8, 10, 8],
+                                    }}
+                                    transition={{
+                                        duration: 2,
+                                        repeat: Infinity,
+                                        ease: "easeInOut",
+                                    }}
                                 />
 
-                                <circle
+                                {/* Top orbit point */}
+                                <motion.circle
                                     cx="250"
                                     cy="65"
                                     r="5"
                                     fill="#c99618"
+                                    animate={{
+                                        opacity: [0.3, 1, 0.3],
+                                        r: [4, 6, 4],
+                                    }}
+                                    transition={{
+                                        duration: 2.5,
+                                        repeat: Infinity,
+                                        ease: "easeInOut",
+                                    }}
                                 />
 
-                                <circle
+                                {/* Right orbit point */}
+                                <motion.circle
                                     cx="435"
                                     cy="250"
                                     r="5"
                                     fill="#c99618"
+                                    animate={{
+                                        opacity: [1, 0.3, 1],
+                                        r: [6, 4, 6],
+                                    }}
+                                    transition={{
+                                        duration: 2.8,
+                                        repeat: Infinity,
+                                        ease: "easeInOut",
+                                    }}
                                 />
 
-                                <circle
+                                {/* Bottom orbit point */}
+                                <motion.circle
                                     cx="250"
                                     cy="435"
                                     r="5"
                                     fill="#c99618"
+                                    animate={{
+                                        opacity: [0.3, 1, 0.3],
+                                        r: [4, 6, 4],
+                                    }}
+                                    transition={{
+                                        duration: 3,
+                                        repeat: Infinity,
+                                        ease: "easeInOut",
+                                    }}
                                 />
 
-                                <circle
+                                {/* Left orbit point */}
+                                <motion.circle
                                     cx="65"
                                     cy="250"
                                     r="5"
                                     fill="#c99618"
+                                    animate={{
+                                        opacity: [1, 0.3, 1],
+                                        r: [6, 4, 6],
+                                    }}
+                                    transition={{
+                                        duration: 2.7,
+                                        repeat: Infinity,
+                                        ease: "easeInOut",
+                                    }}
                                 />
                             </svg>
 
-                            {/* Center Content */}
-                            <div className="relative z-10 flex flex-col items-center text-center">
-                                {/* <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#111111] text-[#c99618] shadow-xl">
-                                    <Sparkles className="h-6 w-6" />
-                                </div> */}
-
-                                {/* <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#c99618]">
-                                    Resol Industries
-                                </span> */}
-
-                                {/* <h3 className="mt-2 text-3xl font-extrabold tracking-tight sm:text-4xl">
-                                    We’re Here
-                                    <br />
-                                    <span className="font-medium text-gray-400">
-                                        To Help.
-                                    </span>
-                                </h3> */}
-                            </div>
-
-                            {/* Floating dots */}
+                            {/* Floating dot 1 */}
                             <motion.span
-                                animate={{ y: [0, -8, 0] }}
+                                animate={{
+                                    y: [0, -12, 0],
+                                    x: [0, 5, 0],
+                                    opacity: [0.4, 1, 0.4],
+                                }}
                                 transition={{
                                     duration: 3,
                                     repeat: Infinity,
-                                    ease: 'easeInOut',
+                                    ease: "easeInOut",
                                 }}
                                 className="absolute left-[16%] top-[27%] h-2 w-2 rounded-full bg-[#c99618]"
                             />
 
+                            {/* Floating dot 2 */}
                             <motion.span
-                                animate={{ y: [0, 8, 0] }}
+                                animate={{
+                                    y: [0, 12, 0],
+                                    x: [0, -6, 0],
+                                    opacity: [0.3, 0.8, 0.3],
+                                }}
                                 transition={{
                                     duration: 3.5,
                                     repeat: Infinity,
-                                    ease: 'easeInOut',
+                                    ease: "easeInOut",
                                 }}
                                 className="absolute bottom-[25%] right-[17%] h-2 w-2 rounded-full bg-[#c99618]/50"
+                            />
+
+                            {/* Floating dot 3 */}
+                            <motion.span
+                                animate={{
+                                    y: [0, -10, 0],
+                                    opacity: [0.2, 0.7, 0.2],
+                                }}
+                                transition={{
+                                    duration: 4,
+                                    repeat: Infinity,
+                                    ease: "easeInOut",
+                                }}
+                                className="absolute right-[25%] top-[17%] h-1.5 w-1.5 rounded-full bg-[#c99618]"
+                            />
+
+                            {/* Floating dot 4 */}
+                            <motion.span
+                                animate={{
+                                    x: [0, 10, 0],
+                                    opacity: [0.2, 0.8, 0.2],
+                                }}
+                                transition={{
+                                    duration: 3.8,
+                                    repeat: Infinity,
+                                    ease: "easeInOut",
+                                }}
+                                className="absolute bottom-[18%] left-[27%] h-1.5 w-1.5 rounded-full bg-[#c99618]/70"
                             />
                         </div>
 
@@ -282,8 +450,8 @@ export default function FAQSection() {
                                             <div className="flex items-center gap-4">
                                                 <span
                                                     className={`text-[10px] font-bold tracking-widest ${isOpen
-                                                            ? 'text-[#c99618]'
-                                                            : 'text-gray-300'
+                                                        ? 'text-[#c99618]'
+                                                        : 'text-gray-300'
                                                         }`}
                                                 >
                                                     {String(index + 1).padStart(
@@ -294,8 +462,8 @@ export default function FAQSection() {
 
                                                 <span
                                                     className={`text-sm font-semibold sm:text-[15px] ${isOpen
-                                                            ? 'text-[#111111]'
-                                                            : 'text-gray-600'
+                                                        ? 'text-[#111111]'
+                                                        : 'text-gray-600'
                                                         }`}
                                                 >
                                                     {faq.question}
@@ -308,8 +476,8 @@ export default function FAQSection() {
                                                 }}
                                                 transition={{ duration: 0.3 }}
                                                 className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full ${isOpen
-                                                        ? 'bg-[#c99618] text-white'
-                                                        : 'bg-gray-50 text-gray-400'
+                                                    ? 'bg-[#c99618] text-white'
+                                                    : 'bg-gray-50 text-gray-400'
                                                     }`}
                                             >
                                                 <ChevronDown className="h-4 w-4" />
