@@ -123,7 +123,7 @@ export default function HowWeWork() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5 }}
-                        className="mb-3 text-xs font-semibold uppercase tracking-[0.22em] text-[#c99618]"
+                        className="mb-3 text-xs font-semibold uppercase tracking-[0.22em] text-[#f5bd24]"
                     >
                         How We Work
                     </motion.p>
@@ -133,7 +133,7 @@ export default function HowWeWork() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
-                        className="text-4xl font-semibold leading-[1.05] tracking-[-0.04em] sm:text-5xl lg:text-6xl"
+                        className="text-4xl font-semibold leading-[1.05] text-[#0d2461] tracking-[-0.04em] sm:text-5xl lg:text-6xl"
                     >
                         From requirement
                         <br />
@@ -180,7 +180,7 @@ export default function HowWeWork() {
 
                                 <motion.div
                                     style={{ height: progressHeight }}
-                                    className="absolute left-[5px] top-0 w-px bg-[#c99618]"
+                                    className="absolute left-[5px] top-0 w-px bg-[#f5bd24]"
                                 />
 
                                 <div className="space-y-5">
@@ -217,7 +217,7 @@ export default function HowWeWork() {
                                             >
                                                 <span
                                                     className={`relative z-10 flex h-3 w-3 shrink-0 rounded-full border-2 transition-all duration-300 ${active
-                                                        ? "scale-125 border-[#c99618] bg-[#c99618]"
+                                                        ? "scale-125 border-[#f5bd24] bg-[#f5bd24]"
                                                         : "border-black/20 bg-[#f7f7f5] group-hover:border-[#c99618]"
                                                         }`}
                                                 />

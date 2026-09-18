@@ -215,7 +215,7 @@ export default function AboutUs() {
                             <WordReveal
                                 text="with Quality Materials."
                                 delay={0.15}
-                                className="font-medium text-[#0d2461]/40"
+                                className="font- text-[#0d2461]"
                             />
 
                         </h1>

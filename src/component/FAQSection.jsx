@@ -411,7 +411,7 @@ export default function FAQSection() {
                             <h2 className="text-3xl font-extrabold leading-[1.1] tracking-tight sm:text-4xl">
                                 Frequently Asked
                                 <br />
-                                <span className="font-medium text-[#c99618]">
+                                <span className="font-medium text-[#f5bd24]">
                                     Questions.
                                 </span>
                             </h2>
@@ -435,7 +435,7 @@ export default function FAQSection() {
                                                 opacity: isOpen ? 1 : 0,
                                             }}
                                             transition={{ duration: 0.3 }}
-                                            className="absolute left-0 top-0 w-[3px] bg-[#c99618]"
+                                            className="absolute left-0 top-0 w-[3px] bg-[#f5bd24]"
                                         />
 
                                         <button
@@ -476,7 +476,7 @@ export default function FAQSection() {
                                                 }}
                                                 transition={{ duration: 0.3 }}
                                                 className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full ${isOpen
-                                                    ? 'bg-[#c99618] text-white'
+                                                    ? 'bg-[#f5bd24] text-white'
                                                     : 'bg-gray-50 text-gray-400'
                                                     }`}
                                             >

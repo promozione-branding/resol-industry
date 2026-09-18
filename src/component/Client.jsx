@@ -45,9 +45,9 @@ export default function Client() {
                         Our Clients
                     </span>
 
-                    <h2 className="text-[40px] font-medium leading-[0.95] tracking-[-0.045em] text-[#181818] sm:text-5xl md:text-6xl lg:text-[68px]">
+                    <h2 className="text-[40px] font-medium leading-[0.95] tracking-[-0.045em] text-[#0d2461] sm:text-5xl md:text-6xl lg:text-[68px]">
                         Trusted by
-                        <span className="mt-1 block text-neutral-400">
+                        <span className="mt-1 block text-[#f5bd24]">
                             Leading Brands.
                         </span>
                     </h2>

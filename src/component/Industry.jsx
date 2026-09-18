@@ -181,20 +181,20 @@ export default function IndustriesSection() {
                             duration: 0.45,
                             ease,
                         }}
-                        className="mb-3 text-[10px] font-bold uppercase tracking-[0.4em] text-gray-400 sm:text-[11px]"
+                        className="mb-3 text-[10px] font-bold uppercase tracking-[0.4em] text-[#0d2461] sm:text-[11px]"
                     >
                         INDUSTRIES WE SERVE
                     </motion.p>
 
                     {/* Heading */}
-                    <h2 className="mb-2 text-3xl font-extrabold leading-[1.1] tracking-tight text-[#111111] sm:text-5xl lg:text-6xl">
+                    <h2 className="mb-2 text-3xl font-extrabold leading-[1.1] tracking-tight text-[#0d2461] sm:text-5xl lg:text-6xl">
                         <RevealText>
                             Materials That
                         </RevealText>{" "}
 
                         <RevealText
                             delay={0.08}
-                            className="bg-gradient-to-r from-gray-400 to-gray-600 bg-clip-text font-medium text-transparent"
+                            className="bg-gradient-to-r text-[#f5bd24] bg-clip-text font-medium"
                         >
                             Power
                         </RevealText>{" "}

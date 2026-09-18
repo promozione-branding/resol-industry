@@ -275,8 +275,8 @@ export default function Hero3() {
                   font-extrabold
                   leading-[1.06]
                   tracking-tight
-                  text-[#0f172a]
-                  md:text-6xl
+                  text-[#0d2461]
+                  md:text-[55px]
 
                   max-lg:mb-5
                   max-lg:text-[clamp(2.75rem,11vw,4.5rem)]
@@ -286,7 +286,7 @@ export default function Hero3() {
                                 Materials for the
                                 <br />
 
-                                <span className="text-[#334155]">
+                                <span className="">
                                     industries that matter.
                                 </span>
                             </h1>
@@ -363,11 +363,7 @@ export default function Hero3() {
                     className="
             relative
             z-10
-            pb-6
-            pt-16
-
-            max-lg:pb-8
-            max-lg:pt-4
+            pt-2
           "
                 >
 
@@ -376,7 +372,7 @@ export default function Hero3() {
               text-4xl
               font-extrabold
               tracking-tight
-              text-[#0f172a]
+              text-[#f5bd24]
               md:text-6xl
 
               max-lg:text-[clamp(2.25rem,10vw,3.5rem)]
@@ -391,7 +387,7 @@ export default function Hero3() {
             DESKTOP SPACER
         ===================================================== */}
 
-                <div className="min-h-[95vh] w-full max-lg:hidden" />
+                <div className="min-h-[100vh] w-full max-lg:hidden" />
 
                 {/* =====================================================
             DESKTOP ANIMATED CARDS
@@ -428,7 +424,7 @@ export default function Hero3() {
                                     className="
                     group
                     absolute
-                    top-15
+                    -top-8
                     flex
                     w-[47%]
                     max-w-[600px]

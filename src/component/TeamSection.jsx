@@ -35,16 +35,16 @@ export default function TeamSection() {
 
                     <div>
                         <div className="mb-3 flex items-center gap-3">
-                            <span className="h-px w-8 bg-[#c99618]" />
+                            <span className="h-px w-8 bg-[#f5bd24]" />
 
-                            <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[#c99618] sm:text-[11px]">
+                            <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[#f5bd24] sm:text-[11px]">
                                 Our Team
                             </p>
                         </div>
 
-                        <h2 className="text-3xl font-extrabold leading-[1.05] tracking-tight sm:text-4xl lg:text-5xl">
+                        <h2 className="text-3xl font-extrabold leading-[1.05] text-[#0d2461] tracking-tight sm:text-4xl lg:text-5xl">
                             The People Behind{' '}
-                            <span className="font-medium text-[#c99618]">
+                            <span className="font-medium text-[#f5bd24]">
                                 Resol Industries.
                             </span>
                         </h2>
@@ -92,7 +92,7 @@ export default function TeamSection() {
                                 </div>
 
                                 {/* Gold bottom line */}
-                                <div className="absolute bottom-0 left-0 h-[3px] w-0 bg-[#c99618] transition-all duration-500 group-hover:w-full" />
+                                <div className="absolute bottom-0 left-0 h-[3px] w-0 bg-[#f5bd24] transition-all duration-500 group-hover:w-full" />
                             </div>
 
                             {/* Details */}
@@ -114,7 +114,7 @@ export default function TeamSection() {
 
                                 {/* Gold accent */}
                                 <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#c99618]/30 bg-[#c99618]/5 transition-all duration-300 group-hover:bg-[#c99618]">
-                                    <span className="h-1.5 w-1.5 rounded-full bg-[#c99618] transition-colors duration-300 group-hover:bg-white" />
+                                    <span className="h-1.5 w-1.5 rounded-full bg-[#f5bd24] transition-colors duration-300 group-hover:bg-white" />
                                 </div>
 
                             </div>

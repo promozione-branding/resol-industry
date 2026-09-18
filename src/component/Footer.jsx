@@ -231,7 +231,7 @@ export default function Footer() {
                   font-(--font-lexend)
                   text-[13px]
                   leading-6
-                  text-white/40
+                  text-white/60
                 "
               >
                 Your trusted partner for polymers, resins, PET resin
@@ -477,7 +477,7 @@ export default function Footer() {
                         font-(--font-lexend)
                         text-[12px]
                         leading-6
-                        text-white/40
+                        text-white/60
                         transition-colors
                         duration-300
                         group-hover:text-white/65
@@ -571,14 +571,14 @@ export default function Footer() {
 
                   <a
                     href="tel:+911141417725"
-                    className="block hover:text-[#D4A017]"
+                    className="block text-white/60 hover:text-[#D4A017]"
                   >
                     +91-11-41417725
                   </a>
 
                   <a
                     href="tel:+911141417825"
-                    className="block hover:text-[#D4A017]"
+                    className="block text-white/60 hover:text-[#D4A017]"
                   >
                     +91-11-41417825
                   </a>
@@ -595,21 +595,21 @@ export default function Footer() {
 
                   <a
                     href="tel:+919999995255"
-                    className="block hover:text-[#D4A017]"
+                    className="block text-white/60 hover:text-[#D4A017]"
                   >
                     +91-9999995255
                   </a>
 
                   <a
                     href="tel:+919999997765"
-                    className="block hover:text-[#D4A017]"
+                    className="block text-white/60 hover:text-[#D4A017]"
                   >
                     +91-9999997765
                   </a>
 
                   <a
                     href="tel:+919810929486"
-                    className="block hover:text-[#D4A017]"
+                    className="block text-white/60 hover:text-[#D4A017]"
                   >
                     +91-9810929486
                   </a>
@@ -626,7 +626,7 @@ export default function Footer() {
 
                   <a
                     href="mailto:info@resolvinyls.com"
-                    className="break-all hover:text-[#D4A017]"
+                    className="break-all text-white/60 hover:text-[#D4A017]"
                   >
                     info@resolvinyls.com
                   </a>
@@ -755,7 +755,7 @@ export default function Footer() {
               className="
                 text-[10px]
                 leading-5
-                text-white/25
+                text-white/60
               "
             >
               © {new Date().getFullYear()} Resol Industries Ltd.

@@ -210,10 +210,10 @@ export default function CTASection() {
                                         duration: 0.6,
                                         delay: 0.1,
                                     }}
-                                    className="h-px bg-[#c99618]"
+                                    className="h-px bg-[#f5bd24]"
                                 />
 
-                                <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#c99618]">
+                                <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#f5bd24]">
                                     LET&apos;S WORK TOGETHER
                                 </span>
                             </motion.div>
@@ -222,7 +222,7 @@ export default function CTASection() {
                                 MAIN TYPOGRAPHY
                             ========================================= */}
 
-                            <h2 className="max-w-3xl text-4xl font-extrabold leading-[1.05] tracking-tight text-[#111827] sm:text-5xl lg:text-6xl">
+                            <h2 className="max-w-3xl text-4xl font-extrabold leading-[1.05] tracking-tight text-[#0d2461] sm:text-5xl lg:text-6xl">
 
                                 <SplitReveal text="The right materials" />
 
@@ -231,7 +231,7 @@ export default function CTASection() {
                                 <SplitReveal
                                     text="for your next project."
                                     delay={0.35}
-                                    className="font-medium text-[#c99618]"
+                                    className="font-medium text-[#f5bd24]"
                                 />
 
                             </h2>
@@ -290,7 +290,7 @@ export default function CTASection() {
                                     whileTap={{
                                         scale: 0.97,
                                     }}
-                                    className="group inline-flex items-center justify-center gap-3 rounded-full bg-[#c99618] px-4 py-3.5 text-sm font-bold text-white transition-all duration-300 hover:bg-[#b38412] hover:shadow-[0_10px_35px_rgba(201,150,24,0.25)]"
+                                    className="group inline-flex items-center justify-center gap-3 rounded-full bg-[#f5bd24] px-4 py-3.5 text-sm font-bold text-white transition-all duration-300 hover:bg-[#e6a611] hover:shadow-[0_10px_35px_rgba(201,150,24,0.25)]"
                                 >
                                     <Download className="h-4 w-4" />
 
@@ -495,7 +495,7 @@ export default function CTASection() {
                                 whileTap={{
                                     scale: 0.95,
                                 }}
-                                className="flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-[#f8f7f3] text-gray-500 transition-all duration-300 hover:border-[#c99618] hover:bg-[#c99618] hover:text-white"
+                                className="flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-[#f8f7f3] text-gray-500 transition-all duration-300 hover:border-[#f5bd24] hover:bg-[#f5bd24] hover:text-white"
                             >
                                 <FaLinkedinIn className="h-4 w-4" />
                             </motion.a>
@@ -511,7 +511,7 @@ export default function CTASection() {
                                 whileTap={{
                                     scale: 0.95,
                                 }}
-                                className="flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-[#f8f7f3] text-gray-500 transition-all duration-300 hover:border-[#c99618] hover:bg-[#c99618] hover:text-white"
+                                className="flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-[#f8f7f3] text-gray-500 transition-all duration-300 hover:border-[#f5bd24] hover:bg-[#f5bd24] hover:text-white"
                             >
                                 <FaInstagram className="h-4 w-4" />
                             </motion.a>
@@ -527,7 +527,7 @@ export default function CTASection() {
                                 whileTap={{
                                     scale: 0.95,
                                 }}
-                                className="flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-[#f8f7f3] text-gray-500 transition-all duration-300 hover:border-[#c99618] hover:bg-[#c99618] hover:text-white"
+                                className="flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-[#f8f7f3] text-gray-500 transition-all duration-300 hover:border-[#f5bd24] hover:bg-[#f5bd24] hover:text-white"
                             >
                                 <FaFacebookF className="h-4 w-4" />
                             </motion.a>
@@ -545,7 +545,7 @@ export default function CTASection() {
                                 whileTap={{
                                     scale: 0.95,
                                 }}
-                                className="flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-[#f8f7f3] text-gray-500 transition-all duration-300 hover:border-[#c99618] hover:bg-[#c99618] hover:text-white"
+                                className="flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-[#f8f7f3] text-gray-500 transition-all duration-300 hover:border-[#f5bd24] hover:bg-[#f5bd24] hover:text-white"
                             >
                                 <FaWhatsapp className="h-4 w-4" />
                             </motion.a>

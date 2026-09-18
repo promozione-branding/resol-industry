@@ -203,7 +203,7 @@ export default function OurProjectsSection() {
                                 }}
                                 className="pt-2"
                             >
-                                <span className="mb-4 block text-[10px] font-bold uppercase tracking-[0.4em] text-neutral-400">
+                                <span className="mb-4 block text-[10px] font-bold uppercase tracking-[0.4em] text-[#0d2461]">
                                     OUR PRODUCT CATEGORIES
                                 </span>
 
@@ -211,7 +211,7 @@ export default function OurProjectsSection() {
 
                                     <TextReveal
                                         text="Materials"
-                                        className="font-light text-neutral-500"
+                                        className="font-light text-[#f5bd24]"
                                     />
 
                                     {" "}
@@ -219,7 +219,7 @@ export default function OurProjectsSection() {
                                     <TextReveal
                                         text="for"
                                         delay={0.08}
-                                        className="font-extrabold"
+                                        className="font-extrabold text-[#0d2461]"
                                     />
 
                                     <br />
@@ -227,7 +227,7 @@ export default function OurProjectsSection() {
                                     <TextReveal
                                         text="Modern Industry."
                                         delay={0.14}
-                                        className="font-extrabold"
+                                        className="font-extrabold text-[#0d2461]"
                                     />
                                 </h2>
 
