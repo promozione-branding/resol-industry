@@ -29,21 +29,21 @@ HERO DATA
 const HERO_SLIDES = [
     {
         id: 1,
-        title: "CALCIUM CARBONATE",
+        title: "CALCIUM CARBONATE IMPORTER",
         image: "/calcium.webp",
         description:
             "High-quality Calcium Carbonate designed for consistent performance across a wide range of industrial applications.",
     },
     {
         id: 2,
-        title: "POLYSTYRENE",
+        title: "POLYSTYRENE IMPORTER",
         image: "/banner28.webp",
         description:
             "Reliable Polystyrene material offering consistent processing and dependable performance for modern industrial requirements.",
     },
     {
         id: 3,
-        title: "PVC RESIN",
+        title: "PVC RESIN IMPORTER",
         image: "/pvc4.webp",
         description:
             "Premium PVC Resin engineered for reliable processing, consistent quality and diverse industrial applications.",

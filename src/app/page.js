@@ -1,5 +1,6 @@
 import AboutUs from '@/component/About'
 import Client from '@/component/Client'
+import FAQSection from '@/component/FAQSection'
 import Footer from '@/component/Footer'
 import HeroSection from '@/component/Hero'
 import IndustriesSection from '@/component/Industry'
@@ -22,7 +23,7 @@ export default function Home() {
       <Cta />
       <IndustriesSection />
       <TeamSection />
-
+      <FAQSection />
       <Footer />
     </div>
   )
