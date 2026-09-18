@@ -183,7 +183,7 @@ export default function Contact() {
 
                 <section className="relative">
 
-                    <div className="mx-auto max-w-[1500px] px-5 py-16 sm:px-8 lg:px-12 lg:py-24 xl:px-16">
+                    <div className="mx-auto max-w-[1500px] px-5 py-10 sm:px-8 lg:px-12 lg:py-14 xl:px-16">
 
                         <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
 
@@ -487,7 +487,7 @@ export default function Contact() {
 
                 <section className="border-t border-black/[0.08] bg-white">
 
-                    <div className="mx-auto max-w-[1500px] px-5 py-16 sm:px-8 lg:px-12 lg:py-24 xl:px-16">
+                    <div className="mx-auto max-w-[1500px] px-5 py-10 sm:px-8 lg:px-12 lg:py-14 xl:px-16">
 
                         <motion.div
                             initial="hidden"
@@ -620,7 +620,7 @@ export default function Contact() {
 
                 <section className="relative border-t border-black/[0.08] bg-[#f7f7f5]">
 
-                    <div className="mx-auto max-w-[1500px] px-5 py-16 sm:px-8 lg:px-12 lg:py-24 xl:px-16">
+                    <div className="mx-auto max-w-[1500px] px-5 py-10 sm:px-8 lg:px-12 lg:py-14 xl:px-16">
 
                         <div className="mb-8">
 
