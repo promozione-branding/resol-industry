@@ -37,7 +37,7 @@ const products = [
         id: 4,
         title: "EVA",
         category: "POLYMERS & RESINS",
-        image: "/zikai.webp",
+        image: "/banner28 (1).webp",
         href: "/products/",
         description:
             "Versatile EVA materials suitable for footwear, adhesives, packaging, flexible products, and various industrial applications.",

@@ -127,13 +127,13 @@ const allProducts = [
     },
     {
         categoryName: "Citric Acid",
-        image: "/critic.webp",
+        image: "/images (1).jpg",
         slug: "/products/",
         tag: "PE",
     },
     {
         categoryName: "Plasticizers",
-        image: "/Dop.webp",
+        image: "/images (2).jpg",
         slug: "/products/",
         tag: "PP",
     },

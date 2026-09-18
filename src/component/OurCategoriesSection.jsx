@@ -19,7 +19,7 @@ const products = [
             "A comprehensive range of polymers and resins for plastic, packaging, manufacturing, and industrial applications.",
         image: "/pvc4.webp",
         details:
-            "Megha Systems offers a wide range of polymer and resin products sourced for diverse industrial and manufacturing applications. Our portfolio includes PVC, PET Resin, EVA and other polymer materials suitable for different production requirements.",
+            "Resol Industries offers a wide range of polymer and resin products sourced for diverse industrial and manufacturing applications. Our portfolio includes PVC, PET Resin, EVA and other polymer materials suitable for different production requirements.",
         features: [
             "PVC Resin",
             "PET Resin",
@@ -47,7 +47,7 @@ const products = [
         title: "Rubber, Fillers & Colourants",
         description:
             "Specialized rubber, filler and colourant materials developed for performance, processing, and formulation requirements.",
-        image: "/Polybutadiene Rubber.webp",
+        image: "/images.jpg",
         details:
             "Our portfolio includes Natural & Synthetic Rubber, Fillers and Colourants for applications across rubber, plastics and other industrial manufacturing sectors. These materials are selected to support performance, consistency and efficient processing.",
         features: [
@@ -58,6 +58,99 @@ const products = [
         ],
     },
 ];
+
+const ease = [0.22, 1, 0.36, 1];
+
+/* =============================================================
+   HEADING TEXT ANIMATION
+   Word-by-word reveal
+============================================================= */
+
+function TextReveal({ text, className = "", delay = 0 }) {
+    const words = text.split(" ");
+
+    return (
+        <motion.span
+            initial="hidden"
+            whileInView="visible"
+            viewport={{
+                // once: true,
+                amount: 0.4,
+            }}
+            variants={{
+                hidden: {},
+                visible: {
+                    transition: {
+                        staggerChildren: 0.055,
+                        delayChildren: delay,
+                    },
+                },
+            }}
+            className={`inline-flex flex-wrap ${className}`}
+        >
+            {words.map((word, index) => (
+                <motion.span
+                    key={`${word}-${index}`}
+                    className="mr-[0.25em] inline-block"
+                    variants={{
+                        hidden: {
+                            opacity: 0,
+                            y: 28,
+                            filter: "blur(5px)",
+                        },
+                        visible: {
+                            opacity: 1,
+                            y: 0,
+                            filter: "blur(0px)",
+                            transition: {
+                                duration: 0.55,
+                                ease,
+                            },
+                        },
+                    }}
+                >
+                    {word}
+                </motion.span>
+            ))}
+        </motion.span>
+    );
+}
+
+/* =============================================================
+   PRODUCT REVEAL ANIMATION
+============================================================= */
+
+const imageReveal = {
+    hidden: {
+        opacity: 0,
+        y: 35,
+        scale: 0.97,
+    },
+    visible: {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        transition: {
+            duration: 0.65,
+            ease,
+        },
+    },
+};
+
+const infoReveal = {
+    hidden: {
+        opacity: 0,
+        x: -20,
+    },
+    visible: {
+        opacity: 1,
+        x: 0,
+        transition: {
+            duration: 0.5,
+            ease,
+        },
+    },
+};
 
 export default function OurProjectsSection() {
     const [selectedProduct, setSelectedProduct] = useState(null);
@@ -85,33 +178,85 @@ export default function OurProjectsSection() {
                     <div className="grid grid-cols-1 gap-x-12 lg:grid-cols-2 xl:gap-x-20">
 
                         {/* =====================================================
-                LEFT COLUMN
-            ===================================================== */}
+                            LEFT COLUMN
+                        ===================================================== */}
+
                         <div className="flex flex-col justify-between gap-5">
 
                             {/* Heading */}
-                            <div className="pt-2">
+                            <motion.div
+                                initial={{
+                                    opacity: 0,
+                                    y: 20,
+                                }}
+                                whileInView={{
+                                    opacity: 1,
+                                    y: 0,
+                                }}
+                                viewport={{
+                                    // once: true,
+                                    amount: 0.4,
+                                }}
+                                transition={{
+                                    duration: 0.5,
+                                    ease,
+                                }}
+                                className="pt-2"
+                            >
                                 <span className="mb-4 block text-[10px] font-bold uppercase tracking-[0.4em] text-neutral-400">
                                     OUR PRODUCT CATEGORIES
                                 </span>
 
                                 <h2 className="mb-5 text-[2.6rem] leading-[1.08] tracking-[-0.02em] text-neutral-900 sm:text-5xl">
-                                    <span className="font-light text-neutral-500">
-                                        Materials
-                                    </span>{" "}
-                                    <span className="font-extrabold">for</span>
+
+                                    <TextReveal
+                                        text="Materials"
+                                        className="font-light text-neutral-500"
+                                    />
+
+                                    {" "}
+
+                                    <TextReveal
+                                        text="for"
+                                        delay={0.08}
+                                        className="font-extrabold"
+                                    />
+
                                     <br />
-                                    <span className="font-extrabold">
-                                        Modern Industry.
-                                    </span>
+
+                                    <TextReveal
+                                        text="Modern Industry."
+                                        delay={0.14}
+                                        className="font-extrabold"
+                                    />
                                 </h2>
 
-                                <p className="max-w-xl text-[15px] font-normal leading-[1.75] text-neutral-500">
-                                    Explore our portfolio of polymers, resins, industrial chemicals,
-                                    additives, rubber, fillers, and colourants sourced for diverse
+                                <motion.p
+                                    initial={{
+                                        opacity: 0,
+                                        y: 15,
+                                    }}
+                                    whileInView={{
+                                        opacity: 1,
+                                        y: 0,
+                                    }}
+                                    viewport={{
+                                        // once: true,
+                                        amount: 0.4,
+                                    }}
+                                    transition={{
+                                        duration: 0.5,
+                                        delay: 0.15,
+                                        ease,
+                                    }}
+                                    className="max-w-xl text-[15px] font-normal leading-[1.75] text-neutral-500"
+                                >
+                                    Explore our portfolio of polymers, resins,
+                                    industrial chemicals, additives, rubber,
+                                    fillers, and colourants sourced for diverse
                                     manufacturing and industrial applications.
-                                </p>
-                            </div>
+                                </motion.p>
+                            </motion.div>
 
                             {/* Product 01 Image */}
                             <CategoryImage
@@ -123,7 +268,23 @@ export default function OurProjectsSection() {
                             <ProductInfo product={products[0]} />
 
                             {/* CTA */}
-                            <div
+                            <motion.div
+                                initial={{
+                                    opacity: 0,
+                                    y: 25,
+                                }}
+                                whileInView={{
+                                    opacity: 1,
+                                    y: 0,
+                                }}
+                                viewport={{
+                                    // once: true,
+                                    amount: 0.25,
+                                }}
+                                transition={{
+                                    duration: 0.55,
+                                    ease,
+                                }}
                                 className="flex flex-col gap-6 rounded-3xl p-8"
                                 style={{ backgroundColor: "#f0eeec" }}
                             >
@@ -133,10 +294,11 @@ export default function OurProjectsSection() {
                                     </h3>
 
                                     <p className="text-[13px] font-normal leading-[1.75] text-neutral-400">
-                                        From design and customization to manufacturing
-                                        and installation, Megha Systems delivers complete
-                                        solutions tailored to your space, requirements,
-                                        and vision.
+                                        From design and customization to
+                                        manufacturing and installation,
+                                        Resol Industries delivers complete
+                                        solutions tailored to your requirements
+                                        and applications.
                                     </p>
                                 </div>
 
@@ -165,19 +327,16 @@ export default function OurProjectsSection() {
                                             >
                                                 +91 9810929486
                                             </a>
-
-
-
-
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </motion.div>
                         </div>
 
                         {/* =====================================================
-                RIGHT COLUMN
-            ===================================================== */}
+                            RIGHT COLUMN
+                        ===================================================== */}
+
                         <div className="mt-10 flex flex-col gap-10 lg:mt-0">
 
                             {/* Product 02 Image */}
@@ -203,8 +362,9 @@ export default function OurProjectsSection() {
             </section>
 
             {/* =========================================================
-          PRODUCT POPUP
-      ========================================================= */}
+                PRODUCT POPUP
+            ========================================================= */}
+
             <AnimatePresence>
                 {selectedProduct && (
                     <motion.div
@@ -239,15 +399,15 @@ export default function OurProjectsSection() {
                                 ease: [0.21, 0.47, 0.32, 0.98],
                             }}
                             className="
-                relative
-                max-h-[90vh]
-                w-full
-                max-w-[1000px]
-                overflow-hidden
-                rounded-[24px]
-                bg-white
-                shadow-[0_30px_100px_rgba(0,0,0,0.25)]
-              "
+                                relative
+                                max-h-[90vh]
+                                w-full
+                                max-w-[1000px]
+                                overflow-hidden
+                                rounded-[24px]
+                                bg-white
+                                shadow-[0_30px_100px_rgba(0,0,0,0.25)]
+                            "
                         >
                             {/* Close Button */}
                             <button
@@ -255,24 +415,24 @@ export default function OurProjectsSection() {
                                 onClick={closeProduct}
                                 aria-label="Close"
                                 className="
-                  absolute
-                  right-4
-                  top-4
-                  z-20
-                  flex
-                  h-10
-                  w-10
-                  items-center
-                  justify-center
-                  rounded-full
-                  bg-white/90
-                  text-neutral-900
-                  shadow-lg
-                  backdrop-blur
-                  transition-all
-                  hover:scale-105
-                  hover:bg-white
-                "
+                                    absolute
+                                    right-4
+                                    top-4
+                                    z-20
+                                    flex
+                                    h-10
+                                    w-10
+                                    items-center
+                                    justify-center
+                                    rounded-full
+                                    bg-white/90
+                                    text-neutral-900
+                                    shadow-lg
+                                    backdrop-blur
+                                    transition-all
+                                    hover:scale-105
+                                    hover:bg-white
+                                "
                             >
                                 <X className="h-5 w-5" />
                             </button>
@@ -302,7 +462,7 @@ export default function OurProjectsSection() {
                                 <div className="flex flex-col justify-center p-7 sm:p-10 lg:p-12">
 
                                     <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#f0ad00]">
-                                        Megha Systems
+                                        Resol Industries
                                     </span>
 
                                     <h2 className="mt-3 text-3xl font-extrabold leading-[1.05] tracking-[-0.03em] text-[#0d2461] sm:text-4xl">
@@ -339,25 +499,25 @@ export default function OurProjectsSection() {
                                             href="tel:+919873735713"
                                             onClick={closeProduct}
                                             className="
-                        group
-                        inline-flex
-                        items-center
-                        justify-center
-                        gap-2
-                        rounded-full
-                        bg-[#0d2461]
-                        px-6
-                        py-3.5
-                        text-xs
-                        font-bold
-                        uppercase
-                        tracking-widest
-                        text-white
-                        transition-all
-                        hover:-translate-y-0.5
-                        hover:bg-[#102d7a]
-                        hover:shadow-lg
-                      "
+                                                group
+                                                inline-flex
+                                                items-center
+                                                justify-center
+                                                gap-2
+                                                rounded-full
+                                                bg-[#0d2461]
+                                                px-6
+                                                py-3.5
+                                                text-xs
+                                                font-bold
+                                                uppercase
+                                                tracking-widest
+                                                text-white
+                                                transition-all
+                                                hover:-translate-y-0.5
+                                                hover:bg-[#102d7a]
+                                                hover:shadow-lg
+                                            "
                                         >
                                             Get a Quote
 
@@ -368,23 +528,23 @@ export default function OurProjectsSection() {
                                             type="button"
                                             onClick={closeProduct}
                                             className="
-                        inline-flex
-                        items-center
-                        justify-center
-                        rounded-full
-                        border
-                        border-neutral-200
-                        px-6
-                        py-3.5
-                        text-xs
-                        font-bold
-                        uppercase
-                        tracking-widest
-                        text-neutral-700
-                        transition-all
-                        hover:border-neutral-900
-                        hover:bg-neutral-50
-                      "
+                                                inline-flex
+                                                items-center
+                                                justify-center
+                                                rounded-full
+                                                border
+                                                border-neutral-200
+                                                px-6
+                                                py-3.5
+                                                text-xs
+                                                font-bold
+                                                uppercase
+                                                tracking-widest
+                                                text-neutral-700
+                                                transition-all
+                                                hover:border-neutral-900
+                                                hover:bg-neutral-50
+                                            "
                                         >
                                             Close
                                         </button>
@@ -408,8 +568,14 @@ function CategoryImage({ product, onClick }) {
         <motion.button
             type="button"
             onClick={onClick}
+            initial="hidden"
+            whileInView="visible"
             whileHover="hover"
-            initial="rest"
+            viewport={{
+                // once: true,
+                amount: 0.2,
+            }}
+            variants={imageReveal}
             className="group relative block w-full cursor-pointer overflow-hidden rounded-3xl bg-neutral-100 text-left"
         >
             <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl">
@@ -418,7 +584,10 @@ function CategoryImage({ product, onClick }) {
                     src={product.image}
                     alt={product.title}
                     variants={{
-                        rest: {
+                        hidden: {
+                            scale: 1.02,
+                        },
+                        visible: {
                             scale: 1,
                         },
                         hover: {
@@ -427,7 +596,7 @@ function CategoryImage({ product, onClick }) {
                     }}
                     transition={{
                         duration: 0.7,
-                        ease: [0.21, 0.47, 0.32, 0.98],
+                        ease,
                     }}
                     className="h-full w-full object-cover"
                 />
@@ -435,7 +604,10 @@ function CategoryImage({ product, onClick }) {
                 {/* Dark Overlay */}
                 <motion.div
                     variants={{
-                        rest: {
+                        hidden: {
+                            opacity: 0,
+                        },
+                        visible: {
                             opacity: 0,
                         },
                         hover: {
@@ -449,18 +621,23 @@ function CategoryImage({ product, onClick }) {
                 {/* Center View Button */}
                 <motion.div
                     variants={{
-                        rest: {
+                        hidden: {
                             opacity: 0,
-                            scale: 0.85,
-                            y: 10,
+                            scale: 0.9,
+                        },
+                        visible: {
+                            opacity: 0,
+                            scale: 0.9,
                         },
                         hover: {
                             opacity: 1,
                             scale: 1,
-                            y: 0,
                         },
                     }}
-                    transition={{ duration: 0.3 }}
+                    transition={{
+                        duration: 0.25,
+                        ease,
+                    }}
                     className="absolute inset-0 flex items-center justify-center"
                 >
                     <div className="rounded-full bg-white px-5 py-3 text-[10px] font-bold uppercase tracking-[0.2em] text-[#0d2461] shadow-xl">
@@ -480,9 +657,15 @@ function CategoryImage({ product, onClick }) {
                         </h3>
                     </div>
 
-                    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-[#0d2461]">
+                    <motion.div
+                        whileHover={{
+                            rotate: -8,
+                            scale: 1.08,
+                        }}
+                        className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-[#0d2461]"
+                    >
                         <ArrowRight className="h-4 w-4" />
-                    </div>
+                    </motion.div>
                 </div>
             </div>
         </motion.button>
@@ -495,8 +678,33 @@ function CategoryImage({ product, onClick }) {
 
 function ProductInfo({ product }) {
     return (
-        <div className="flex items-start gap-5">
-            <span
+        <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{
+                // once: true,
+                amount: 0.3,
+            }}
+            variants={infoReveal}
+            className="flex items-start gap-5"
+        >
+            <motion.span
+                initial={{
+                    opacity: 0,
+                    scale: 0.8,
+                }}
+                whileInView={{
+                    opacity: 1,
+                    scale: 1,
+                }}
+                viewport={{
+                    // once: true,
+                    amount: 0.3,
+                }}
+                transition={{
+                    duration: 0.5,
+                    ease,
+                }}
                 className="shrink-0 select-none text-[3.5rem] font-light leading-none"
                 style={{
                     color: "#e2e8f0",
@@ -504,7 +712,7 @@ function ProductInfo({ product }) {
                 }}
             >
                 {product.number}
-            </span>
+            </motion.span>
 
             <div>
                 <h3 className="mb-1.5 text-[1.15rem] font-bold tracking-[-0.01em] text-neutral-900">
@@ -515,6 +723,6 @@ function ProductInfo({ product }) {
                     {product.description}
                 </p>
             </div>
-        </div>
+        </motion.div>
     );
 }

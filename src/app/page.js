@@ -1,5 +1,6 @@
 import AboutUs from '@/component/About'
 import Client from '@/component/Client'
+import CTASection from '@/component/CTASection'
 import FAQSection from '@/component/FAQSection'
 import Footer from '@/component/Footer'
 import HeroSection from '@/component/Hero'
@@ -19,6 +20,7 @@ export default function Home() {
       <Client />
       <OurCategoriesSection />
       <AboutUs />
+      <CTASection />
       <Hero3 />
       <Cta />
       <IndustriesSection />
