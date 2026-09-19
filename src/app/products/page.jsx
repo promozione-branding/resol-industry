@@ -80,21 +80,21 @@ const product = {
 
 const relatedProducts = [
     {
-        name: "PET Resin",
+        name: "Polystyrene (PS)",
         category: "Pet Resin",
-        image: "/Polymers.webp",
+        image: "/ChatGPT Image Sep 19, 2026, 02_55_55 PM.png",
         href: "/products/pet-resin",
     },
     {
-        name: "Calcium Carbonate",
+        name: "Polypropylene (PP)",
         category: "Fillers",
-        image: "/cal.webp",
+        image: "/ChatGPT Image Sep 19, 2026, 02_59_32 PM.png",
         href: "/products/calcium-carbonate",
     },
     {
-        name: "Plasticizers",
+        name: "EVA Resin",
         category: "Chemicals & Additives",
-        image: "/Dop.webp",
+        image: "/ChatGPT Image Sep 19, 2026, 03_01_04 PM.png",
         href: "/products/plasticizers",
     },
 ];
