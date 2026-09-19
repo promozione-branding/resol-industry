@@ -8,36 +8,36 @@ import Image from "next/image";
 const products = [
     {
         id: 1,
-        title: "PVC Resin",
+        title: "Polystyrene (PS)",
         category: "POLYMERS & RESINS",
-        image: "/pvc4.webp",
+        image: "/ChatGPT Image Sep 19, 2026, 02_55_55 PM.png",
         href: "/products/",
         description:
             "High-quality PVC resin for pipes, fittings, flooring, profiles, cables, and a wide range of industrial applications.",
     },
     {
         id: 2,
-        title: "PET Resin",
+        title: "Polypropylene (PP)",
         category: "POLYMERS & RESINS",
-        image: "/Polymers.webp",
+        image: "/ChatGPT Image Sep 19, 2026, 02_59_32 PM.png",
         href: "/products/",
         description:
             "Reliable PET resin solutions for packaging, bottles, containers, and other demanding manufacturing applications.",
     },
     {
         id: 3,
-        title: "Calcium Carbonate",
+        title: "EVA Resin",
         category: "INDUSTRIAL CHEMICALS",
-        image: "/cal.webp",
+        image: "/ChatGPT Image Sep 19, 2026, 03_01_04 PM.png",
         href: "/products/",
         description:
             "Industrial-grade calcium carbonate used as a versatile filler and functional material across plastics, coatings, and manufacturing.",
     },
     {
         id: 4,
-        title: "EVA",
+        title: "Polyethylene (PE)",
         category: "POLYMERS & RESINS",
-        image: "/banner28 (1).webp",
+        image: "/9a23a57c-dc59-4cd1-9e47-0917b53b8b48.png",
         href: "/products/",
         description:
             "Versatile EVA materials suitable for footwear, adhesives, packaging, flexible products, and various industrial applications.",
@@ -424,7 +424,7 @@ export default function Hero3() {
                                     className="
                     group
                     absolute
-                    -top-8
+                    -top-15
                     flex
                     w-[47%]
                     max-w-[600px]

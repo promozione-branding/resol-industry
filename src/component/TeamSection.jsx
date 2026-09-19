@@ -1,126 +1,301 @@
-'use client';
+"use client";
 
-import React from 'react';
-import { motion } from 'framer-motion';
-import Image from 'next/image';
+import React, { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const team = [
     {
-        id: '01',
-        name: 'Mr. Krishan Kumar Bansal',
-        role: 'Founder Director',
-        image: '/mr-krishan-kumar-bansal.webp',
+        id: "02",
+        name: "Mr. Krishan Kumar Bansal",
+        role: "Founder Director",
+        image: "/mr-krishan-kumar-bansal.webp",
     },
     {
-        id: '02',
-        name: 'Mr. Parth Dodeja',
-        role: 'Director',
-        image: '/mr-parth-dodeja-big-377x474.webp',
+        id: "03",
+        name: "Mr. Parth Dodeja",
+        role: "Director",
+        image: "/mr-parth-dodeja-big-377x474.webp",
     },
     {
-        id: '03',
-        name: 'Mr. Vijay Kr. Rawal',
-        role: 'Director',
-        image: '/vijay-rawal-377x474.webp',
+        id: "04",
+        name: "Mr. Vijay Kr. Rawal",
+        role: "Director",
+        image: "/vijay-rawal-377x474.webp",
     },
 ];
 
 export default function TeamSection() {
+    const sectionRef = useRef(null);
+    const contentRef = useRef(null);
+
+    const [contentWidth, setContentWidth] = useState(0);
+    const [viewportWidth, setViewportWidth] = useState(0);
+
+    useEffect(() => {
+        const updateSize = () => {
+            if (contentRef.current) {
+                setContentWidth(contentRef.current.scrollWidth);
+            }
+
+            setViewportWidth(window.innerWidth);
+        };
+
+        updateSize();
+
+        const resizeObserver = new ResizeObserver(updateSize);
+
+        if (contentRef.current) {
+            resizeObserver.observe(contentRef.current);
+        }
+
+        window.addEventListener("resize", updateSize);
+
+        return () => {
+            resizeObserver.disconnect();
+            window.removeEventListener("resize", updateSize);
+        };
+    }, []);
+
+    const { scrollYProgress } = useScroll({
+        target: sectionRef,
+        offset: ["start start", "end end"],
+    });
+
+    const scrollDistance = Math.max(contentWidth - viewportWidth, 0);
+
+    const x = useTransform(
+        scrollYProgress,
+        [0, 1],
+        [0, -scrollDistance]
+    );
+
     return (
-        <section className="w-full overflow-hidden bg-white px-4 py-14 font-sans text-[#111111] sm:px-8 sm:py-16 lg:px-12">
-            <div className="mx-auto max-w-[1350px]">
+        <section
+            ref={sectionRef}
+            className="relative bg-[#F4F2EC] font-sans"
+            style={{
+                height: contentWidth
+                    ? `calc(80vh + ${scrollDistance}px)`
+                    : "180vh",
+            }}
+        >
+            <div className="sticky top-15 h-screen overflow-hidden">
 
-                {/* Header */}
-                <div className="mb-9 flex flex-col justify-between gap-4 md:flex-row md:items-end lg:mb-11">
-
-                    <div>
-                        <div className="mb-3 flex items-center gap-3">
-                            <span className="h-px w-8 bg-[#f5bd24]" />
-
-                            <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-[#f5bd24] sm:text-[11px]">
-                                Our Team
-                            </p>
-                        </div>
-
-                        <h2 className="text-3xl font-extrabold leading-[1.05] text-[#0d2461] tracking-tight sm:text-4xl lg:text-5xl">
-                            The People Behind{' '}
-                            <span className="font-medium text-[#f5bd24]">
-                                Resol Industries.
-                            </span>
-                        </h2>
-                    </div>
-
-                    <p className="max-w-md text-xs leading-relaxed text-gray-500 sm:text-sm">
-                        Experienced leadership driving trusted relationships,
-                        quality products, and long-term growth across the polymer
-                        and chemical industries.
-                    </p>
+                {/* Top Progress */}
+                <div className="absolute left-0 top-0 z-50 h-[2px] w-full bg-[#0d2461]/10">
+                    <motion.div
+                        style={{
+                            scaleX: scrollYProgress,
+                            transformOrigin: "left",
+                        }}
+                        className="h-full bg-[#f5bd24]"
+                    />
                 </div>
 
-                {/* Team Cards */}
-                <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
-                    {team.map((member, index) => (
-                        <motion.div
+                {/* Section Label */}
+                {/* <div className="absolute left-5 top-6 z-40 flex items-center gap-3 lg:left-10">
+                    <span className="h-px w-7 bg-[#0d2461]/30" />
+
+                    <span className="text-[9px] font-bold uppercase tracking-[3px] text-[#0d2461]/50">
+                        Resol Industries / Leadership
+                    </span>
+                </div> */}
+
+                {/* Horizontal Track */}
+                <motion.div
+                    ref={contentRef}
+                    style={{ x }}
+                    className="flex h-full w-max items-center"
+                >
+
+                    {/* =====================================
+                        01 — EXPERIENCE
+                    ====================================== */}
+
+                    <div className="relative flex h-[78vh] w-[82vw] shrink-0 items-center bg-[#0d2461] px-7 md:w-[570px] md:px-12 lg:h-[76vh] lg:w-[620px] lg:px-14">
+
+                        {/* Yellow line */}
+                        <div className="absolute left-0 top-0 h-full w-[3px] bg-[#f5bd24]" />
+
+                        {/* Background number */}
+                        <div className="pointer-events-none absolute bottom-[-25px] right-[-15px] text-[210px] font-extrabold leading-none tracking-[-20px] text-white/[0.025] md:text-[260px]">
+                            01
+                        </div>
+
+                        <div className="relative z-10">
+
+                            <div className="flex items-center gap-3">
+                                <span className="h-[2px] w-8 bg-[#f5bd24]" />
+
+                                <span className="text-[9px] font-bold uppercase tracking-[3px] text-[#f5bd24]">
+                                    Our Experience
+                                </span>
+                            </div>
+
+                            <h2 className="mt-6 text-[42px] font-extrabold leading-[0.95] tracking-[-2.5px] text-white md:text-[55px]">
+                                20+
+                                <br />
+
+                                <span className="text-[#f5bd24]">
+                                    Years
+                                </span>
+
+                                <br />
+
+                                of Industry
+                                <br />
+                                Experience.
+                            </h2>
+
+                            <p className="mt-6 max-w-[430px] text-[12px] leading-[1.8] text-white/60 md:text-[14px]">
+                                Established in 2005, Resol Industries brings
+                                extensive experience in importing and
+                                distributing industrial materials across India.
+                            </p>
+
+                            <div className="mt-7 flex items-center gap-4">
+                                <span className="text-[9px] font-bold uppercase tracking-[2px] text-white/40">
+                                    Meet our leadership
+                                </span>
+
+                                <span className="h-px w-12 bg-[#f5bd24]" />
+                            </div>
+
+                        </div>
+                    </div>
+
+                    {/* =====================================
+                        02 / 03 / 04 — DIRECTORS
+                    ====================================== */}
+
+                    {team.map((member) => (
+                        <div
                             key={member.id}
-                            initial={{ opacity: 0, y: 25 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: '-50px' }}
-                            transition={{
-                                duration: 0.55,
-                                delay: index * 0.1,
-                                ease: [0.21, 0.47, 0.32, 0.98],
-                            }}
-                            className="group"
+                            className="relative flex h-[78vh] w-[78vw] shrink-0 items-center px-4 md:w-[500px] md:px-7 lg:h-[76vh] lg:w-[540px]"
                         >
-                            {/* Image */}
-                            <div className="relative aspect-[4/4.7] overflow-hidden rounded-[22px] bg-[#f3f1ec]">
+
+                            {/* Background Number */}
+                            <div className="pointer-events-none absolute bottom-[-15px] left-0 text-[220px] font-extrabold leading-none tracking-[-20px] text-[#0d2461]/[0.045] md:text-[280px]">
+                                {member.id}
+                            </div>
+
+                            {/* Person Card */}
+                            <div className="group relative z-10 h-full max-h-[650px] w-full overflow-hidden bg-[#dedbd3]">
 
                                 <Image
                                     src={member.image}
                                     alt={member.name}
                                     fill
-                                    sizes="(max-width: 768px) 100vw, 33vw"
-                                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                                    sizes="(max-width: 768px) 78vw, 540px"
+                                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.035]"
                                 />
 
-                                {/* Soft overlay */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent opacity-70" />
+                                {/* Overlay */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-[#0d2461]/95 via-[#0d2461]/15 to-transparent" />
 
-                                {/* Number */}
-                                <div className="absolute left-4 top-4 flex h-9 w-9 items-center justify-center rounded-full border border-white/40 bg-black/10 text-[10px] font-semibold text-white backdrop-blur-md">
-                                    {member.id}
+                                {/* Top Label */}
+                                <div className="absolute left-0 top-0 flex items-center gap-2 bg-[#f5bd24] px-4 py-2.5">
+
+                                    <span className="text-[10px] font-extrabold text-[#0d2461]">
+                                        {member.id}
+                                    </span>
+
+                                    <span className="h-3 w-px bg-[#0d2461]/30" />
+
+                                    <span className="text-[8px] font-bold uppercase tracking-[1.5px] text-[#0d2461]">
+                                        {member.role}
+                                    </span>
+
                                 </div>
 
-                                {/* Gold bottom line */}
-                                <div className="absolute bottom-0 left-0 h-[3px] w-0 bg-[#f5bd24] transition-all duration-500 group-hover:w-full" />
-                            </div>
+                                {/* Person Info */}
+                                <div className="absolute bottom-0 left-0 w-full p-5 md:p-7">
 
-                            {/* Details */}
-                            <div className="flex items-start justify-between gap-3 pt-4">
+                                    <div className="mb-4 h-[2px] w-10 bg-[#f5bd24]" />
 
-                                <div>
-                                    <h3 className="text-base font-bold tracking-tight sm:text-lg">
+                                    <h3 className="max-w-[420px] text-[24px] font-extrabold leading-[1.05] tracking-[-1px] text-white md:text-[29px]">
                                         {member.name}
                                     </h3>
 
-                                    <div className="mt-1 flex items-center gap-2">
-                                        <span className="h-1 w-1 rounded-full bg-[#c99618]" />
+                                    <div className="mt-3 flex items-center gap-2">
+                                        <span className="h-1.5 w-1.5 rounded-full bg-[#f5bd24]" />
 
-                                        <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-gray-400 sm:text-[11px]">
+                                        <p className="text-[9px] font-bold uppercase tracking-[2px] text-white/65">
                                             {member.role}
                                         </p>
                                     </div>
+
                                 </div>
 
-                                {/* Gold accent */}
-                                <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#c99618]/30 bg-[#c99618]/5 transition-all duration-300 group-hover:bg-[#c99618]">
-                                    <span className="h-1.5 w-1.5 rounded-full bg-[#f5bd24] transition-colors duration-300 group-hover:bg-white" />
-                                </div>
+                                {/* Hover Line */}
+                                <div className="absolute bottom-0 left-0 h-[3px] w-0 bg-[#f5bd24] transition-all duration-500 group-hover:w-full" />
 
                             </div>
-                        </motion.div>
+                        </div>
                     ))}
-                </div>
+
+                    {/* =====================================
+                        05 — CTA
+                    ====================================== */}
+
+                    <div className="relative flex h-[78vh] w-[82vw] shrink-0 items-center bg-[#f5bd24] px-7 md:w-[600px] md:px-12 lg:h-[76vh] lg:w-[680px] lg:px-14">
+
+                        {/* Background Number */}
+                        <div className="pointer-events-none absolute bottom-[-20px] right-[-15px] text-[240px] font-extrabold leading-none tracking-[-25px] text-[#0d2461]/[0.06]">
+                            05
+                        </div>
+
+                        <div className="relative z-10">
+
+                            <div className="flex items-center gap-3">
+                                <span className="h-[2px] w-9 bg-[#0d2461]/50" />
+
+                                <span className="text-[9px] font-bold uppercase tracking-[3px] text-[#0d2461]/60">
+                                    Resol Industries Ltd.
+                                </span>
+                            </div>
+
+                            <h2 className="mt-6 text-[42px] font-extrabold leading-[0.94] tracking-[-2.5px] text-[#0d2461] md:text-[52px]">
+
+                                Strong
+                                <br />
+
+                                Leadership.
+
+                                <br />
+
+                                <span className="text-white">
+                                    Trusted
+                                </span>
+
+                                <br />
+
+                                Partnerships.
+
+                            </h2>
+
+                            <p className="mt-6 max-w-[420px] text-[12px] leading-[1.8] text-[#0d2461]/65 md:text-[14px]">
+                                Driven by experience, trusted relationships and
+                                a commitment to dependable industrial material
+                                supply across India.
+                            </p>
+
+                            <a
+                                href="/contact"
+                                className="mt-7 inline-flex items-center gap-4 bg-[#0d2461] px-6 py-3.5 text-[10px] font-bold uppercase tracking-[2px] text-[#f5bd24] transition-all duration-300 hover:bg-[#0a1c4d]"
+                            >
+                                Connect With Us
+
+                                <span className="text-base">
+                                    →
+                                </span>
+                            </a>
+
+                        </div>
+                    </div>
+
+                </motion.div>
             </div>
         </section>
     );

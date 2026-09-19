@@ -136,12 +136,12 @@ export default function Footer() {
               text-[18vw]
               font-black
               leading-none
-              tracking-[-0.08em]
+              tracking-[0.1em]
               text-white/[0.090]
               select-none
             "
           >
-            RESOL
+            RIL
           </div>
 
           {/* TOP LINE */}
@@ -460,7 +460,7 @@ export default function Footer() {
                           font-bold
                           uppercase
                           tracking-[1.5px]
-                          text-white/30
+                          text-white/60
                         "
                       >
                         {office.type}
@@ -854,10 +854,9 @@ export default function Footer() {
           duration-300
           hover:bg-white
           md:right-7
-          ${
-            showTop
-              ? "pointer-events-auto"
-              : "pointer-events-none"
+          ${showTop
+            ? "pointer-events-auto"
+            : "pointer-events-none"
           }
         `}
       >

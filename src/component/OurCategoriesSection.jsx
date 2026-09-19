@@ -14,10 +14,10 @@ import Image from "next/image";
 const products = [
     {
         number: "01",
-        title: "Polymers & Resins",
+        title: "Polymers",
         description:
             "A comprehensive range of polymers and resins for plastic, packaging, manufacturing, and industrial applications.",
-        image: "/pvc4.webp",
+        image: "/polymer-raw-materials-image-800x600-1.webp",
         details:
             "Resol Industries offers a wide range of polymer and resin products sourced for diverse industrial and manufacturing applications. Our portfolio includes PVC, PET Resin, EVA and other polymer materials suitable for different production requirements.",
         features: [
@@ -29,10 +29,10 @@ const products = [
     },
     {
         number: "02",
-        title: "Chemicals & Additives",
+        title: "Citric Acid",
         description:
             "Essential industrial chemicals and additives designed to support diverse manufacturing and processing requirements.",
-        image: "/cal.webp",
+        image: "/BLOG-citric-acid-origins.png",
         details:
             "Our chemicals and additives portfolio includes Calcium Carbonate, Citric Acid, Plasticizers and other essential materials used across multiple manufacturing and industrial processes. We focus on consistent quality and reliable product supply.",
         features: [
@@ -60,12 +60,6 @@ const products = [
 ];
 
 const ease = [0.22, 1, 0.36, 1];
-
-/* =============================================================
-   HEADING TEXT ANIMATION
-   Word-by-word reveal
-============================================================= */
-
 function TextReveal({ text, className = "", delay = 0 }) {
     const words = text.split(" ");
 
@@ -289,11 +283,11 @@ export default function OurProjectsSection() {
                                 style={{ backgroundColor: "#f0eeec" }}
                             >
                                 <div>
-                                    <h3 className="mb-3 text-2xl font-extrabold leading-tight tracking-[-0.02em] text-neutral-900 sm:text-[1.7rem]">
+                                    <h3 className="mb-3 text-2xl text-[#0d2461] font-extrabold leading-tight tracking-[-0.02em] sm:text-[1.7rem]">
                                         Let&apos;s Build Your Next Space.
                                     </h3>
 
-                                    <p className="text-[13px] font-normal leading-[1.75] text-neutral-400">
+                                    <p className="text-[13px] font-normal leading-[1.75] text-[#0d2461]">
                                         From design and customization to
                                         manufacturing and installation,
                                         Resol Industries delivers complete
@@ -302,17 +296,17 @@ export default function OurProjectsSection() {
                                     </p>
                                 </div>
 
-                                <div className="flex flex-wrap items-center gap-4 border-t border-neutral-300/60 pt-5">
+                                <div className="flex flex-wrap items-center gap-4 border-t border-neutral-400/60 pt-5">
                                     <Link
                                         href="/contact-us"
-                                        className="inline-flex items-center gap-2 rounded-full border border-neutral-400 px-6 py-3 text-xs font-bold uppercase tracking-widest text-neutral-900 transition-all duration-300 hover:border-neutral-900 hover:bg-neutral-900 hover:text-white"
+                                        className="inline-flex items-center gap-2 rounded-full border border-neutral-400 px-6 py-3 text-xs font-bold uppercase tracking-widest text-neutral-900 transition-all duration-300 hover:border-neutral-900 hover:bg-[#0d2461] hover:text-white"
                                     >
                                         Connect with us
                                         <ArrowRight className="h-3.5 w-3.5" />
                                     </Link>
 
                                     <div className="flex items-center gap-3">
-                                        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-neutral-900 text-white">
+                                        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#0d2461] text-white">
                                             <Phone className="h-4 w-4" />
                                         </div>
 
@@ -559,10 +553,6 @@ export default function OurProjectsSection() {
     );
 }
 
-/* =============================================================
-   PRODUCT IMAGE
-============================================================= */
-
 function CategoryImage({ product, onClick }) {
     return (
         <motion.button
@@ -648,11 +638,11 @@ function CategoryImage({ product, onClick }) {
                 {/* Bottom Product Name */}
                 <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between">
                     <div>
-                        <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-white/70">
+                        <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#0d2461]">
                             Product {product.number}
                         </span>
 
-                        <h3 className="mt-1 text-lg font-bold text-white">
+                        <h3 className="mt-1 text-lg font-bold text-[#0d2461]">
                             {product.title}
                         </h3>
                     </div>
@@ -671,10 +661,6 @@ function CategoryImage({ product, onClick }) {
         </motion.button>
     );
 }
-
-/* =============================================================
-   PRODUCT INFO
-============================================================= */
 
 function ProductInfo({ product }) {
     return (

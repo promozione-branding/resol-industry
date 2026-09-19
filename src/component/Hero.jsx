@@ -29,10 +29,10 @@ HERO DATA
 const HERO_SLIDES = [
     {
         id: 1,
-        title: "CALCIUM CARBONATE IMPORTER",
-        image: "/calcium.webp",
+        title: "POLYOLEFIN ELASTOMER IMPORTER",
+        image: "/ChatGPT Image Sep 19, 2026, 12_05_22 PM.png",
         description:
-            "High-quality Calcium Carbonate designed for consistent performance across a wide range of industrial applications.",
+            "High-quality Polyolefin Elastomer designed for consistent performance across a wide range of industrial applications.",
     },
     {
         id: 2,
@@ -103,7 +103,7 @@ const projects = [
 const allProducts = [
     {
         categoryName: "Polymers",
-        image: "/pvc4.webp",
+        image: "/polymer-raw-materials-image-800x600-1.webp",
         slug: "/products/",
         tag: "PVC",
     },
@@ -114,40 +114,28 @@ const allProducts = [
         tag: "Grade",
     },
     {
-        categoryName: "Calcium Carbonate",
-        image: "/cal.webp",
-        slug: "/products/",
-        tag: "Grade",
-    },
-    {
-        categoryName: "Zikai",
-        image: "/zikai.webp",
-        slug: "/products/",
-        tag: "EVA",
-    },
-    {
         categoryName: "Citric Acid",
-        image: "/images (1).jpg",
+        image: "/BLOG-citric-acid-origins.png",
         slug: "/products/",
         tag: "PE",
     },
     {
         categoryName: "Plasticizers",
-        image: "/images (2).jpg",
+        image: "/images (3).jpg",
         slug: "/products/",
         tag: "PP",
     },
     {
-        categoryName: "Natural & Synthetic Rubber",
-        image: "/Polybutadiene Rubber.webp",
-        slug: "/products/",
-        tag: "PS",
-    },
-    {
         categoryName: "Fillers & Colourants",
-        image: "/precipitated-silica.webp",
+        image: "/milky-white-filler-masterbatch-500x500.webp",
         slug: "/products/",
         tag: "POE",
+    },
+    {
+        categoryName: "Natural & Synthetic Rubber",
+        image: "/fotolia_2295139_XS.jpg",
+        slug: "/products/",
+        tag: "PS",
     },
 ]
 
@@ -243,7 +231,7 @@ const ProductCard = memo(function ProductCard({ product }) {
             <div className="flex h-full">
 
                 {/* IMAGE */}
-                <div className="relative h-full w-[43%] shrink-0 overflow-hidden">
+                <div className="relative h-full w-[50%] shrink-0 overflow-hidden">
                     <Image
                         src={product.image}
                         alt={product.categoryName}
@@ -788,7 +776,7 @@ export default function HeroSection() {
                 </div>
             </section>
 
-            <section className="w-full bg-white py-6 md:py-5">
+            <section className="w-full bg-white">
 
                 <div className="mx-auto max-w-[1750px] px-5 md:px-8">
 
@@ -827,7 +815,7 @@ export default function HeroSection() {
                                 spaceBetween: 18,
                             },
                         }}
-                        className="w-full !overflow-hidden"
+                        className="w-full overflow-hidden! py-10!"
                     >
 
                         {allProducts.map((product) => (

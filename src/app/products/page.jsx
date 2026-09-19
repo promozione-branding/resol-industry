@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { memo, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -114,6 +114,73 @@ const fadeUp = {
     },
 };
 
+const TypewriterText = memo(function TypewriterText({
+    text,
+    speed = 100,
+    onComplete,
+    className = '',
+}) {
+    const [displayedText, setDisplayedText] = useState('');
+    const completeRef = useRef(onComplete);
+
+    useEffect(() => {
+        completeRef.current = onComplete;
+    }, [onComplete]);
+
+    useEffect(() => {
+        let index = 0;
+        let timeoutId = null;
+
+
+        setDisplayedText('');
+
+        const typeNext = () => {
+            index += 1;
+
+            setDisplayedText(text.slice(0, index));
+
+            if (index < text.length) {
+                timeoutId = setTimeout(typeNext, speed);
+            } else {
+                completeRef.current?.();
+            }
+        };
+
+        if (text.length > 0) {
+            timeoutId = setTimeout(typeNext, speed);
+        } else {
+            completeRef.current?.();
+        }
+
+        return () => {
+            if (timeoutId) {
+                clearTimeout(timeoutId);
+            }
+        };
+
+
+    }, [text, speed]);
+
+    const isTyping = displayedText.length < text.length;
+
+    return (<span className={className}>
+        {displayedText}
+
+
+        {isTyping && (
+            <span
+                className="ml-1 inline-block font-light"
+                aria-hidden="true"
+            >
+                |
+            </span>
+        )}
+    </span>
+
+
+    );
+});
+
 export default function ProductDetailsPage() {
     const [activeImage, setActiveImage] = useState(0);
 
@@ -199,7 +266,7 @@ export default function ProductDetailsPage() {
                                 </div>
 
                                 {/* Main image */}
-                                <div className="relative overflow-hidden h-90">
+                                <div className="relative overflow-hidden h-105">
 
                                     <AnimatePresence mode="wait">
                                         <motion.div
@@ -251,28 +318,6 @@ export default function ProductDetailsPage() {
                                     </button>
                                 </div>
                             </div>
-
-                            {/* Thumbnails */}
-                            <div className="mt-4 grid grid-cols-4 gap-3">
-                                {product.images.map((image, index) => (
-                                    <button
-                                        key={image}
-                                        type="button"
-                                        onClick={() => setActiveImage(index)}
-                                        className={`relative h-30 w-40 overflow-hidden rounded-2xl border bg-white transition ${activeImage === index
-                                            ? "border-[#c99618] ring-2 ring-[#c99618]/20"
-                                            : "border-black/5 hover:border-[#c99618]/40"
-                                            }`}
-                                    >
-                                        <Image
-                                            src={image}
-                                            alt={`${product.name} ${index + 1}`}
-                                            fill
-                                            className="object-contain p-3"
-                                        />
-                                    </button>
-                                ))}
-                            </div>
                         </motion.div>
 
                         <motion.div
@@ -301,7 +346,12 @@ export default function ProductDetailsPage() {
                                 variants={fadeUp}
                                 className="max-w-2xl text-3xl font-extrabold leading-[1.05] tracking-tight text-[#0d2461] sm:text-4xl lg:text-6xl"
                             >
-                                {product.name}
+                                <TypewriterText
+                                    key={`title-${product.name}`}
+                                    text={product.name}
+                                    speed={100}
+                                />
+                                {/* {product.name} */}
                             </motion.h1>
 
                             <motion.div
@@ -310,12 +360,12 @@ export default function ProductDetailsPage() {
                             />
 
                             {/* Short Description */}
-                            <motion.p
+                            {/* <motion.p
                                 variants={fadeUp}
                                 className="max-w-xl text-sm leading-6 text-gray-500 sm:text-base"
                             >
                                 {product.shortDescription}
-                            </motion.p>
+                            </motion.p> */}
 
                             {/* =================================================
         PRODUCT OVERVIEW
@@ -325,7 +375,7 @@ export default function ProductDetailsPage() {
                                 variants={fadeUp}
                                 className="mt-5 border-l-2 border-[#c99618] pl-4"
                             >
-                                <p className="mb-1 text-[9px] font-bold uppercase tracking-[0.25em] text-[#c99618]">
+                                <p className="mb-1 text-[12px] font-bold uppercase tracking-[0.25em] text-[#c99618]">
                                     Product Overview
                                 </p>
 
@@ -397,7 +447,7 @@ export default function ProductDetailsPage() {
 
                             <motion.div
                                 variants={fadeUp}
-                                className="mt-5 grid gap-2.5 sm:grid-cols-3"
+                                className="mt-6 grid gap-2.5 sm:grid-cols-3"
                             >
                                 {/* WhatsApp */}
                                 <a

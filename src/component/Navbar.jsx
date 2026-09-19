@@ -8,6 +8,7 @@ import {
     X,
     ArrowUpRight,
     Phone,
+    Mail,
 } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -27,18 +28,6 @@ export default function Navbar() {
             tag: "Grade",
         },
         {
-            categoryName: "Calcium Carbonate",
-            image: "/cal.webp",
-            slug: "/products/",
-            tag: "Grade",
-        },
-        {
-            categoryName: "Zikai",
-            image: "/zikai.webp",
-            slug: "/products/",
-            tag: "EVA",
-        },
-        {
             categoryName: "Citric Acid",
             image: "/critic.webp",
             slug: "/products/",
@@ -51,16 +40,16 @@ export default function Navbar() {
             tag: "PP",
         },
         {
-            categoryName: "Natural & Synthetic Rubber",
-            image: "/Polybutadiene Rubber.webp",
-            slug: "/products/",
-            tag: "PS",
-        },
-        {
             categoryName: "Fillers & Colourants",
             image: "/precipitated-silica.webp",
             slug: "/products/",
             tag: "POE",
+        },
+        {
+            categoryName: "Natural & Synthetic Rubber",
+            image: "/Polybutadiene Rubber.webp",
+            slug: "/products/",
+            tag: "PS",
         },
     ]
 
@@ -102,44 +91,34 @@ export default function Navbar() {
 
     return (
         <>
-            {/* =====================================================
-          TOP ANNOUNCEMENT BAR
-      ===================================================== */}
-
-            <div className="w-full md:flex hidden sticky top-0 z-[60] bg-[#0d2461] text-white text-[13px] sm:text-[13.5px] font-semibold tracking-wide text-center py-1.5 px-4 items-center justify-center gap-3">
-                <span className="opacity-85">
+            <div className="w-full md:flex hidden sticky top-0 z-[60] bg-[#0d2461] text-white text-[13px] sm:text-[13.5px] font-semibold tracking-wide text-center py-1.5 px-10 items-center justify-between gap-3">
+                <span className="opacity-85 flex gap-2">
+                    <span className="text-[#f5bd24]">✦</span>
                     Resol Industries Ltd. (RIL)
                 </span>
 
-                <span className="opacity-30">|</span>
-
-                <span className="text-[#f5bd24]">✦</span>
-
-                <span className="opacity-85 ml-1">
+                <span className="opacity-85 ml-1 flex gap-2">
+                    <span className="text-[#f5bd24]">✦</span>
                     PVC Resin Importer and Distributor
                 </span>
 
-                <span className="opacity-30">|</span>
+                <div className='flex gap-4'>
+                    <a
+                        href="tel:+919810929486"
+                        className="inline-flex items-center gap-1.5 hover:text-[#f5bd24] text-white transition-colors font-bold"
+                    >
+                        <Phone className="w-3.5 h-3.5" />
+                        +91-9810929486
+                    </a>
+                    <a
+                        href="mailto:+919873735713"
+                        className="inline-flex items-center gap-1.5 hover:text-[#f5bd24] text-white transition-colors font-bold"
+                    >
 
-                <a
-                    href="tel:+919810929486"
-                    className="inline-flex items-center gap-1.5 text-[#f5bd24] hover:text-white transition-colors font-bold"
-                >
-                    <Phone className="w-3.5 h-3.5" />
-                    +91-9810929486
-                </a>
-                <a
-                    href="mailto:+919873735713"
-                    className="inline-flex items-center gap-1.5 text-[#f5bd24] hover:text-white transition-colors font-bold"
-                >
-
-                    info@resolvinyls.com
-                </a>
+                        <Mail className="w-3.5 h-3.5" />  info@resolvinyls.com
+                    </a>
+                </div>
             </div>
-
-            {/* =====================================================
-          MAIN NAVBAR
-      ===================================================== */}
 
             <header
                 className={`relative z-50 w-full transition-all duration-500 sticky top-0 md:top-[32px] font-sans ${scrolled
@@ -217,6 +196,18 @@ export default function Navbar() {
                             <span className="absolute bottom-0.5 left-3 right-3 h-[2px] bg-[#f5bd24] scale-x-0 group-hover:scale-x-100 transition-transform duration-200 rounded-full" />
                         </Link>
 
+                        {/* About */}
+                        <div className="relative group py-1.5 cursor-pointer">
+                            <Link
+                                href="/about-us"
+                                className="flex items-center gap-1 px-3 sm:px-3.5 text-nowrap py-1.5 rounded-lg hover:bg-[#0d2461]/6 transition-all duration-200 relative"
+                            >
+                                <span>About Us</span>
+
+                                <span className="absolute bottom-0.5 left-3 right-3 h-[2px] bg-[#f5bd24] scale-x-0 group-hover:scale-x-100 transition-transform duration-200 rounded-full" />
+                            </Link>
+                        </div>
+
                         {/* Products Dropdown */}
                         <div className="relative group py-1.5 cursor-pointer">
                             <Link
@@ -277,18 +268,6 @@ export default function Navbar() {
                             </div>
                         </div>
 
-                        {/* About */}
-                        <div className="relative group py-1.5 cursor-pointer">
-                            <Link
-                                href="/about-us"
-                                className="flex items-center gap-1 px-3 sm:px-3.5 text-nowrap py-1.5 rounded-lg hover:bg-[#0d2461]/6 transition-all duration-200 relative"
-                            >
-                                <span>About Us</span>
-
-                                <span className="absolute bottom-0.5 left-3 right-3 h-[2px] bg-[#f5bd24] scale-x-0 group-hover:scale-x-100 transition-transform duration-200 rounded-full" />
-                            </Link>
-                        </div>
-
                         {/* Contact */}
                         <Link
                             href="/contact-us"
@@ -310,32 +289,9 @@ export default function Navbar() {
                                 <span className="absolute bottom-0.5 left-3 right-3 h-[2px] bg-[#f5bd24] scale-x-0 group-hover:scale-x-100 transition-transform duration-200 rounded-full" />
                             </Link>
                         </div>
-
-                        {/* Projects */}
-                        <div className="relative group py-1.5 cursor-pointer">
-                            <Link
-                                href="/projects"
-                                className="flex items-center gap-1 px-3 sm:px-3.5 py-1.5 rounded-lg hover:bg-[#0d2461]/6 transition-all duration-200 relative"
-                            >
-                                <span>Projects</span>
-
-                                <span className="absolute bottom-0.5 left-3 right-3 h-[2px] bg-[#f5bd24] scale-x-0 group-hover:scale-x-100 transition-transform duration-200 rounded-full" />
-                            </Link>
-                        </div>
                     </nav>
 
-                    {/* =================================================
-              DESKTOP CTA
-          ================================================= */}
-
                     <div className="hidden xl:flex items-center gap-2.5 shrink-0">
-                        <button
-                            onClick={() => setOpen(true)}
-                            className="px-4.5 sm:px-5 py-2.5 text-[14px] font-bold text-[#0d2461] border border-[#0d2461]/30 rounded-lg hover:border-[#0d2461] hover:bg-[#0d2461]/5 transition-all duration-200"
-                        >
-                            Get in Touch
-                        </button>
-
                         <a
                             href="/products"
                             className="group relative inline-flex items-center gap-2 bg-[#0d2461] text-white px-5 sm:px-6 py-2.5 text-[14px] font-bold rounded-lg overflow-hidden transition-all duration-300 hover:shadow-[0_8px_30px_rgba(13,36,97,0.35)] hover:-translate-y-0.5 active:translate-y-0"
@@ -343,22 +299,19 @@ export default function Navbar() {
                             <span className="absolute inset-0 bg-gradient-to-r from-transparent via-[#f5bd24]/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out" />
 
                             <span className="relative z-10">
-                                All Products
+                                Zikai
                             </span>
 
                             <ArrowRight className="relative z-10 w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
                         </a>
+
+                        <button
+                            onClick={() => setOpen(true)}
+                            className="px-4.5 sm:px-5 py-2.5 text-[14px] font-bold text-[#0d2461] border border-[#0d2461]/30 rounded-lg hover:border-[#0d2461] hover:bg-[#0d2461]/5 transition-all duration-200"
+                        >
+                            Get in Touch
+                        </button>
                     </div>
-
-
-
-                    {/* =================================================
-              MOBILE TOGGLE
-          ================================================= */}
-
-                    {/* =================================================
-    MOBILE + TABLET ACTIONS
-================================================= */}
 
                     <div className="xl:hidden flex items-center gap-0 shrink-0">
                         {/* Get a Quote */}

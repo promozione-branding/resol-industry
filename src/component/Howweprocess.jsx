@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import {
     ClipboardCheck,
@@ -9,7 +10,7 @@ import {
     Truck,
     Handshake,
     CheckCircle2,
-    ArrowDown,
+    ArrowUpRight,
 } from "lucide-react";
 
 const processSteps = [
@@ -21,6 +22,7 @@ const processSteps = [
             "We first understand your product requirement, application, quantity, grade, technical expectations, and delivery needs.",
         points: ["Product & grade", "Application", "Quantity planning"],
         icon: ClipboardCheck,
+        image: "/BLOG-citric-acid-origins.png",
     },
     {
         number: "02",
@@ -30,6 +32,7 @@ const processSteps = [
             "Our diversified supplier network helps us source polymers, chemicals, additives, and other materials according to your requirement.",
         points: ["Supplier network", "Availability", "Commercial coordination"],
         icon: Factory,
+        image: "/Polymers.webp",
     },
     {
         number: "03",
@@ -39,6 +42,7 @@ const processSteps = [
             "We focus on specifications and quality requirements so the material is aligned with the intended application and manufacturing needs.",
         points: ["Specification review", "Quality focus", "Application suitability"],
         icon: PackageCheck,
+        image: "/polymer-raw-materials-image-800x600-1.webp",
     },
     {
         number: "04",
@@ -48,6 +52,7 @@ const processSteps = [
             "We coordinate packaging, dispatch, logistics, and delivery to support reliable bulk supply across India.",
         points: ["Bulk supply", "Logistics", "Pan-India reach"],
         icon: Truck,
+        image: "/milky-white-filler-masterbatch-500x500.webp",
     },
     {
         number: "05",
@@ -57,6 +62,7 @@ const processSteps = [
             "Our focus extends beyond one transaction. We work toward long-term relationships, recurring requirements, and future business needs.",
         points: ["Long-term partnerships", "Responsive support", "Ongoing supply"],
         icon: Handshake,
+        image: "/images (3).jpg",
     },
 ];
 
@@ -76,292 +82,471 @@ export default function HowWeWork() {
     );
 
     useEffect(() => {
-        const handleScroll = () => {
-            if (!sectionRef.current) return;
-
-            const rect = sectionRef.current.getBoundingClientRect();
-            const viewportCenter = window.innerHeight * 0.5;
-
-            const distance = viewportCenter - rect.top;
-
-            const totalHeight = sectionRef.current.offsetHeight;
-
-            const progress = distance / totalHeight;
-
-            const index = Math.floor(
-                progress * processSteps.length
+        const unsubscribe = scrollYProgress.on("change", (value) => {
+            const index = Math.min(
+                processSteps.length - 1,
+                Math.floor(value * processSteps.length)
             );
 
-            setActiveStep(
-                Math.max(
-                    0,
-                    Math.min(processSteps.length - 1, index)
-                )
-            );
-        };
-
-        window.addEventListener("scroll", handleScroll, {
-            passive: true,
+            setActiveStep(index);
         });
 
-        handleScroll();
-
-        return () =>
-            window.removeEventListener("scroll", handleScroll);
-    }, []);
+        return () => unsubscribe();
+    }, [scrollYProgress]);
 
     return (
         <section
             ref={sectionRef}
-            className="relative bg-[#f7f7f5] text-[#111]"
+            className="relative bg-[#F4F2EC] text-[#0d2461] border border-[#f5bd24]"
         >
-            {/* HEADER */}
-            <div className="mx-auto max-w-[1400px] px-5 pb-8 pt-8 sm:px-8 lg:px-12 lg:pt-10">
-                <div className="max-w-3xl">
-                    <motion.p
-                        initial={{ opacity: 0, y: 15 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5 }}
-                        className="mb-3 text-xs font-semibold uppercase tracking-[0.22em] text-[#f5bd24]"
-                    >
-                        How We Work
-                    </motion.p>
+            {/* ================= HEADER ================= */}
+            <div className="mx-auto max-w-[1400px] px-5 pb-5 pt-5 sm:px-8 lg:px-12 lg:pb-5 lg:pt-10">
 
-                    <motion.h2
-                        initial={{ opacity: 0, y: 25 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                        className="text-4xl font-semibold leading-[1.05] text-[#0d2461] tracking-[-0.04em] sm:text-5xl lg:text-6xl"
-                    >
-                        From requirement
-                        <br />
-                        <span className="text-[#0d2461]">
-                            to reliable supply.
-                        </span>
-                    </motion.h2>
+                <div className="flex flex-col justify-between gap-7 lg:flex-row lg:items-end">
 
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5, delay: 0.1 }}
-                        className="mt-5 max-w-2xl text-sm leading-7 text-black/60 sm:text-base"
-                    >
+                    <div>
+                        <motion.div
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5 }}
+                            className="mb-4 flex items-center gap-3"
+                        >
+                            <span className="h-[2px] w-8 bg-[#f5bd24]" />
+
+                            <span className="text-[10px] font-bold uppercase tracking-[3px] text-[#0d2461]/50">
+                                How We Work
+                            </span>
+                        </motion.div>
+
+                        <motion.h2
+                            initial={{ opacity: 0, y: 25 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6 }}
+                            className="text-[42px] font-extrabold leading-[0.95] tracking-[-2.5px] sm:text-5xl lg:text-[64px]"
+                        >
+                            From requirement
+                            <br />
+                            <span className="text-[#0d2461]/40">
+                                to reliable supply.
+                            </span>
+                        </motion.h2>
+                    </div>
+
+                    <p className="max-w-sm text-sm leading-7 text-[#0d2461]/50 lg:pb-2">
                         A straightforward process built around understanding
                         requirements, reliable sourcing, quality focus, and
                         long-term customer relationships.
-                    </motion.p>
+                    </p>
                 </div>
             </div>
 
-            {/* MAIN STICKY AREA */}
-            <div className="mx-auto max-w-[1400px] px-5 pb-10 sm:px-8 lg:px-12">
-                <div className="grid lg:grid-cols-[0.7fr_1.3fr] lg:gap-16">
+            {/* ================= DESKTOP STICKY STORY ================= */}
+            <div className="mx-auto hidden max-w-[1400px] px-5 sm:px-8 lg:block lg:px-12">
 
-                    {/* LEFT STICKY */}
-                    <div className="hidden lg:block">
-                        <div className="sticky top-20 flex h-[calc(100vh-160px)] flex-col justify-center">
+                <div className="grid grid-cols-[260px_1fr] gap-14">
 
-                            <div className="mb-8">
-                                <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-black/40">
-                                    Our Process
-                                </p>
+                    {/* LEFT NAV */}
+                    <div className="relative">
 
-                                <h3 className="max-w-sm text-3xl font-semibold leading-tight text-[#0d2461]">
-                                    A clear process for dependable supply.
-                                </h3>
-                            </div>
+                        <div className="sticky top-24 h-[calc(100vh-180px)]">
 
-                            {/* STEP NAVIGATION */}
-                            <div className="relative">
-                                <div className="absolute left-[5px] top-0 h-full w-px bg-black/10" />
+                            <div className="flex h-full flex-col justify-center">
 
-                                <motion.div
-                                    style={{ height: progressHeight }}
-                                    className="absolute left-[5px] top-0 w-px bg-[#f5bd24]"
-                                />
+                                <div className="mb-9">
+                                    <p className="mb-2 text-[9px] font-bold uppercase tracking-[2.5px] text-[#0d2461]/35">
+                                        Our Process
+                                    </p>
 
-                                <div className="space-y-5">
-                                    {processSteps.map((step, index) => {
-                                        const active = activeStep === index;
+                                    <h3 className="max-w-[220px] text-2xl font-extrabold leading-tight tracking-[-1px]">
+                                        A clear path to dependable supply.
+                                    </h3>
+                                </div>
 
-                                        return (
-                                            <button
-                                                key={step.number}
-                                                type="button"
-                                                className="group relative flex w-full items-center gap-5 text-left"
-                                                onClick={() => {
-                                                    const section = sectionRef.current;
+                                {/* TIMELINE */}
+                                <div className="relative">
 
-                                                    if (!section) return;
+                                    <div className="absolute left-[5px] top-0 h-full w-px bg-[#0d2461]/10" />
 
-                                                    const sectionTop =
-                                                        section.getBoundingClientRect().top +
-                                                        window.scrollY;
+                                    <motion.div
+                                        style={{
+                                            height: progressHeight,
+                                        }}
+                                        className="absolute left-[5px] top-0 w-[2px] bg-[#f5bd24]"
+                                    />
 
-                                                    const sectionHeight =
-                                                        section.offsetHeight;
+                                    <div className="space-y-6">
+                                        {processSteps.map(
+                                            (step, index) => {
+                                                const active =
+                                                    activeStep === index;
 
-                                                    const targetProgress =
-                                                        index / processSteps.length;
+                                                return (
+                                                    <div
+                                                        key={step.number}
+                                                        className="relative flex items-center gap-5"
+                                                    >
+                                                        <span
+                                                            className={`relative z-10 h-3 w-3 rounded-full border-2 transition-all duration-300 ${active
+                                                                ? "scale-125 border-[#f5bd24] bg-[#f5bd24]"
+                                                                : "border-[#0d2461]/15 bg-[#F4F2EC]"
+                                                                }`}
+                                                        />
 
-                                                    window.scrollTo({
-                                                        top:
-                                                            sectionTop +
-                                                            targetProgress * sectionHeight,
-                                                        behavior: "smooth",
-                                                    });
-                                                }}
-                                            >
-                                                <span
-                                                    className={`relative z-10 flex h-3 w-3 shrink-0 rounded-full border-2 transition-all duration-300 ${active
-                                                        ? "scale-125 border-[#f5bd24] bg-[#f5bd24]"
-                                                        : "border-black/20 bg-[#f7f7f5] group-hover:border-[#c99618]"
-                                                        }`}
-                                                />
+                                                        <span
+                                                            className={`text-xs font-bold transition-all ${active
+                                                                ? "translate-x-1 text-[#0d2461]"
+                                                                : "text-[#0d2461]/25"
+                                                                }`}
+                                                        >
+                                                            {step.number} —{" "}
+                                                            {step.title}
+                                                        </span>
+                                                    </div>
+                                                );
+                                            }
+                                        )}
+                                    </div>
+                                </div>
 
-                                                <span
-                                                    className={`text-sm font-medium transition-all duration-300 ${active
-                                                        ? "translate-x-1 text-[#0d2461]"
-                                                        : "text-black/35 group-hover:text-black/70"
-                                                        }`}
-                                                >
-                                                    {step.number} — {step.title}
-                                                </span>
-                                            </button>
-                                        );
-                                    })}
+                                <div className="mt-10 flex items-center gap-3">
+                                    <span className="text-4xl font-extrabold">
+                                        {processSteps[activeStep].number}
+                                    </span>
+
+                                    <span className="h-[2px] w-9 bg-[#f5bd24]" />
+
+                                    <span className="text-[9px] font-bold uppercase tracking-[2px] text-[#0d2461]/30">
+                                        05 Steps
+                                    </span>
                                 </div>
                             </div>
+                        </div>
+                    </div>
 
-                            {/* ACTIVE COUNTER */}
-                            <div className="mt-10 flex items-center gap-3">
-                                <span className="text-4xl font-light text-[#0d2461]">
-                                    {processSteps[activeStep].number}
-                                </span>
+                    {/* RIGHT SCROLL DRIVER */}
+                    <div className="relative">
 
-                                <span className="h-px w-10 bg-[#c99618]" />
+                        {/* THIS CREATES THE SCROLL LENGTH */}
+                        <div className="relative h-[500vh]">
 
-                                <span className="text-xs uppercase tracking-[0.18em] text-black/40">
-                                    05 Steps
-                                </span>
+                            {/* ACTUAL STICKY CARD */}
+                            <div className="sticky top-10 flex h-screen items-center py-16">
+
+                                <div className="relative h-[74vh] w-full overflow-hidden border border-[#0d2461]/10 bg-white">
+
+                                    {processSteps.map(
+                                        (step, index) => {
+                                            const Icon = step.icon;
+
+                                            return (
+                                                <motion.div
+                                                    key={step.number}
+                                                    initial={false}
+                                                    animate={{
+                                                        opacity:
+                                                            activeStep ===
+                                                                index
+                                                                ? 1
+                                                                : 0,
+                                                        scale:
+                                                            activeStep ===
+                                                                index
+                                                                ? 1
+                                                                : 0.98,
+                                                    }}
+                                                    transition={{
+                                                        duration: 0.45,
+                                                        ease: [
+                                                            0.22,
+                                                            1,
+                                                            0.36,
+                                                            1,
+                                                        ],
+                                                    }}
+                                                    className={`absolute inset-0 grid grid-cols-2 ${activeStep ===
+                                                        index
+                                                        ? "pointer-events-auto"
+                                                        : "pointer-events-none"
+                                                        }`}
+                                                >
+
+                                                    {/* IMAGE */}
+                                                    <div className="relative overflow-hidden">
+
+                                                        <Image
+                                                            src={
+                                                                step.image
+                                                            }
+                                                            alt={
+                                                                step.title
+                                                            }
+                                                            fill
+                                                            priority={
+                                                                index ===
+                                                                0
+                                                            }
+                                                            sizes="50vw"
+                                                            className="object-cover"
+                                                        />
+
+                                                        <div className="absolute inset-0 bg-gradient-to-t from-[#0d2461]/80 via-[#0d2461]/10 to-transparent" />
+
+                                                        {/* BIG NUMBER */}
+                                                        <div className="absolute bottom-5 left-6 text-[120px] font-extrabold leading-none tracking-[-10px] text-white/10">
+                                                            {step.number}
+                                                        </div>
+
+                                                        {/* LABEL */}
+                                                        <div className="absolute left-6 top-6 flex items-center gap-3">
+
+                                                            <span className="flex h-11 w-11 items-center justify-center bg-[#f5bd24] text-xs font-extrabold text-[#0d2461]">
+                                                                {step.number}
+                                                            </span>
+
+                                                            <span className="text-[9px] font-bold uppercase tracking-[2px] text-white">
+                                                                Resol Industries
+                                                            </span>
+                                                        </div>
+
+                                                        {/* SVG */}
+                                                        <svg
+                                                            className="absolute bottom-7 right-7 h-24 w-24 opacity-40"
+                                                            viewBox="0 0 100 100"
+                                                            fill="none"
+                                                        >
+                                                            <circle
+                                                                cx="50"
+                                                                cy="50"
+                                                                r="38"
+                                                                stroke="#f5bd24"
+                                                            />
+
+                                                            <circle
+                                                                cx="50"
+                                                                cy="50"
+                                                                r="23"
+                                                                stroke="white"
+                                                            />
+
+                                                            <path
+                                                                d="M10 50H90M50 10V90"
+                                                                stroke="#f5bd24"
+                                                            />
+
+                                                            <circle
+                                                                cx="50"
+                                                                cy="50"
+                                                                r="4"
+                                                                fill="#f5bd24"
+                                                            />
+                                                        </svg>
+                                                    </div>
+
+                                                    {/* CONTENT */}
+                                                    <div className="relative flex flex-col justify-between overflow-hidden p-10 xl:p-14">
+
+                                                        {/* BACKGROUND SVG */}
+                                                        <svg
+                                                            className="pointer-events-none absolute right-[-70px] top-[-70px] h-72 w-72 opacity-[0.035]"
+                                                            viewBox="0 0 300 300"
+                                                            fill="none"
+                                                        >
+                                                            <circle
+                                                                cx="150"
+                                                                cy="150"
+                                                                r="125"
+                                                                stroke="#0d2461"
+                                                            />
+                                                            <circle
+                                                                cx="150"
+                                                                cy="150"
+                                                                r="90"
+                                                                stroke="#0d2461"
+                                                            />
+                                                            <circle
+                                                                cx="150"
+                                                                cy="150"
+                                                                r="55"
+                                                                stroke="#0d2461"
+                                                            />
+                                                            <path
+                                                                d="M0 150H300M150 0V300"
+                                                                stroke="#0d2461"
+                                                            />
+                                                            <path
+                                                                d="M45 45L255 255M255 45L45 255"
+                                                                stroke="#0d2461"
+                                                            />
+                                                        </svg>
+
+                                                        <div className="relative z-10">
+
+                                                            <div className="mb-8 flex items-center justify-between">
+
+                                                                <div className="flex h-14 w-14 items-center justify-center rounded-full border border-[#f5bd24] bg-[#f5bd24]/10">
+                                                                    <Icon
+                                                                        size={
+                                                                            23
+                                                                        }
+                                                                        strokeWidth={
+                                                                            1.5
+                                                                        }
+                                                                    />
+                                                                </div>
+
+                                                                <ArrowUpRight
+                                                                    size={
+                                                                        23
+                                                                    }
+                                                                    strokeWidth={
+                                                                        1.4
+                                                                    }
+                                                                    className="text-[#0d2461]/25"
+                                                                />
+                                                            </div>
+
+                                                            <p className="mb-3 text-[10px] font-bold uppercase tracking-[3px] text-[#f5bd24]">
+                                                                Step{" "}
+                                                                {
+                                                                    step.number
+                                                                }
+                                                            </p>
+
+                                                            <h3 className="max-w-lg text-[48px] font-extrabold leading-[0.95] tracking-[-2px] text-[#0d2461] xl:text-[62px]">
+                                                                {
+                                                                    step.title
+                                                                }
+                                                            </h3>
+
+                                                            <p className="mt-6 text-lg font-semibold text-[#0d2461]/70">
+                                                                {
+                                                                    step.subtitle
+                                                                }
+                                                            </p>
+
+                                                            <p className="mt-3 max-w-lg text-sm leading-7 text-[#0d2461]/50 xl:text-[15px]">
+                                                                {
+                                                                    step.description
+                                                                }
+                                                            </p>
+                                                        </div>
+
+                                                        {/* BOTTOM */}
+                                                        <div className="relative z-10 border-t border-[#0d2461]/10 pt-6">
+
+                                                            <p className="mb-3 text-[9px] font-bold uppercase tracking-[2px] text-[#0d2461]/35">
+                                                                Focus Areas
+                                                            </p>
+
+                                                            <div className="flex flex-wrap gap-2">
+                                                                {step.points.map(
+                                                                    (
+                                                                        point
+                                                                    ) => (
+                                                                        <div
+                                                                            key={
+                                                                                point
+                                                                            }
+                                                                            className="flex items-center gap-2 border border-[#0d2461]/10 bg-[#F4F2EC] px-3 py-2 text-[10px] font-semibold text-[#0d2461]/65"
+                                                                        >
+                                                                            <CheckCircle2
+                                                                                size={
+                                                                                    13
+                                                                                }
+                                                                                className="text-[#f5bd24]"
+                                                                            />
+
+                                                                            {
+                                                                                point
+                                                                            }
+                                                                        </div>
+                                                                    )
+                                                                )}
+                                                            </div>
+                                                        </div>
+
+                                                        {/* ACTIVE LINE */}
+                                                        <div className="absolute bottom-0 left-0 h-1 w-full bg-[#f5bd24]" />
+                                                    </div>
+                                                </motion.div>
+                                            );
+                                        }
+                                    )}
+                                </div>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
 
-                    {/* RIGHT SCROLL CONTENT */}
-                    <div className="relative">
-                        {/* MOBILE LINE */}
-                        <div className="absolute left-[7px] top-0 h-full w-px bg-black/10 lg:hidden" />
+            {/* ================= MOBILE ================= */}
+            <div className="px-5 pb-16 sm:px-8 lg:hidden">
 
-                        <div>
-                            {processSteps.map((step, index) => {
-                                const Icon = step.icon;
-                                const active = activeStep === index;
+                <div className="space-y-8">
 
-                                return (
-                                    <div
-                                        key={step.number}
-                                        className="relative min-h-[70vh] py-12 lg:min-h-[70vh] lg:py-0"
-                                    >
-                                        <div className="flex min-h-full items-center">
-                                            {/* MOBILE DOT */}
-                                            <div
-                                                className={`absolute left-0 top-16 z-10 h-4 w-4 rounded-full border-4 border-[#f7f7f5] lg:hidden ${active
-                                                    ? "bg-[#c99618]"
-                                                    : "bg-black/15"
-                                                    }`}
-                                            />
+                    {processSteps.map((step) => {
+                        const Icon = step.icon;
 
-                                            <motion.div
-                                                initial={{
-                                                    opacity: 0,
-                                                    y: 35,
-                                                }}
-                                                whileInView={{
-                                                    opacity: 1,
-                                                    y: 0,
-                                                }}
-                                                viewport={{
-                                                    once: false,
-                                                    amount: 0.35,
-                                                }}
-                                                transition={{
-                                                    duration: 0.55,
-                                                    ease: [0.22, 1, 0.36, 1],
-                                                }}
-                                                className={`ml-8 w-full max-w-3xl lg:ml-0 transition-opacity duration-300 ${active
-                                                    ? "opacity-100"
-                                                    : "opacity-40 lg:opacity-30"
-                                                    }`}
-                                            >
-                                                {/* NUMBER */}
-                                                <div className="mb-5 flex items-center gap-4">
-                                                    <span className="text-xs font-semibold tracking-[0.2em] text-[#c99618]">
-                                                        {step.number}
-                                                    </span>
+                        return (
+                            <div
+                                key={step.number}
+                                className="overflow-hidden border border-[#0d2461]/10 bg-white"
+                            >
+                                <div className="relative h-[260px]">
+                                    <Image
+                                        src={step.image}
+                                        alt={step.title}
+                                        fill
+                                        sizes="100vw"
+                                        className="object-cover"
+                                    />
 
-                                                    <span className="h-px w-10 bg-[#c99618]" />
-                                                </div>
+                                    <div className="absolute inset-0 bg-gradient-to-t from-[#0d2461]/80 to-transparent" />
 
-                                                {/* ICON */}
-                                                <div
-                                                    className={`mb-5 flex h-14 w-14 items-center justify-center rounded-full border transition-all duration-300 ${active
-                                                        ? "border-[#c99618] bg-[#fffaf0]"
-                                                        : "border-black/10 bg-white"
-                                                        }`}
-                                                >
-                                                    <Icon
-                                                        size={24}
-                                                        strokeWidth={1.5}
-                                                        className={
-                                                            active
-                                                                ? "text-[#c99618]"
-                                                                : "text-[#0d2461]"
-                                                        }
-                                                    />
-                                                </div>
-
-                                                {/* TITLE */}
-                                                <h3 className="text-4xl font-semibold leading-[1.05] tracking-[-0.04em] text-[#0d2461] sm:text-5xl lg:text-6xl">
-                                                    {step.title}
-                                                </h3>
-
-                                                {/* SUBTITLE */}
-                                                <p className="mt-4 text-lg font-medium text-black/70">
-                                                    {step.subtitle}
-                                                </p>
-
-                                                {/* DESCRIPTION */}
-                                                <p className="mt-2 max-w-2xl text-sm leading-7 text-black/55 sm:text-base">
-                                                    {step.description}
-                                                </p>
-
-                                                {/* POINTS */}
-                                                <div className="mt-5 flex flex-wrap gap-2">
-                                                    {step.points.map((point) => (
-                                                        <div
-                                                            key={point}
-                                                            className="flex items-center gap-2 rounded-full border border-black/10 bg-white px-3 py-2 text-xs text-black/65"
-                                                        >
-                                                            <CheckCircle2
-                                                                size={14}
-                                                                className="text-[#c99618]"
-                                                            />
-
-                                                            {point}
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                            </motion.div>
-                                        </div>
+                                    <div className="absolute left-5 top-5 flex h-10 w-10 items-center justify-center bg-[#f5bd24] text-xs font-extrabold">
+                                        {step.number}
                                     </div>
-                                );
-                            })}
-                        </div>
-                    </div>
+                                </div>
+
+                                <div className="p-6">
+
+                                    <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-full border border-[#f5bd24] bg-[#f5bd24]/10">
+                                        <Icon
+                                            size={20}
+                                            strokeWidth={1.5}
+                                        />
+                                    </div>
+
+                                    <h3 className="text-4xl font-extrabold leading-none tracking-[-1.5px] text-[#0d2461]">
+                                        {step.title}
+                                    </h3>
+
+                                    <p className="mt-4 text-sm font-semibold text-[#0d2461]/65">
+                                        {step.subtitle}
+                                    </p>
+
+                                    <p className="mt-2 text-sm leading-7 text-[#0d2461]/50">
+                                        {step.description}
+                                    </p>
+
+                                    <div className="mt-5 flex flex-wrap gap-2">
+                                        {step.points.map((point) => (
+                                            <span
+                                                key={point}
+                                                className="border border-[#0d2461]/10 bg-[#F4F2EC] px-3 py-2 text-[10px] font-semibold text-[#0d2461]/60"
+                                            >
+                                                {point}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                <div className="h-1 bg-[#f5bd24]" />
+                            </div>
+                        );
+                    })}
                 </div>
             </div>
         </section>

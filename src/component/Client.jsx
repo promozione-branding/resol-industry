@@ -11,27 +11,27 @@ import Image from "next/image";
 const clients = [
     {
         name: "Astral",
-        logo: "/astrallogo.webp",
+        logo: "/4 (9).webp",
     },
     {
         name: "Cosmo Films",
-        logo: "/cosmo-films.webp",
+        logo: "/2 (25).webp",
     },
     {
         name: "Prince Pipes & Fittings",
-        logo: "/prince-pipes-fittings.webp",
+        logo: "/6 (6).webp",
     },
     {
         name: "Nilkamal",
-        logo: "/nilkamal-ltd.webp",
+        logo: "/1 (77).webp",
     },
     {
         name: "UFlex",
-        logo: "/uflex-ltd.webp",
+        logo: "/5 (9).webp",
     },
     {
         name: "Finolex Industries",
-        logo: "/finolex-industries.webp",
+        logo: "/3 (23).webp",
     },
 ];
 

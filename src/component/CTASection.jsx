@@ -1,7 +1,5 @@
 'use client';
 
-import React from 'react';
-import { motion } from 'framer-motion';
 import {
     ArrowUpRight,
     Download,
@@ -14,11 +12,8 @@ import {
     FaLinkedinIn,
     FaWhatsapp,
 } from 'react-icons/fa';
-
-/* =========================================
-   Common Animation
-========================================= */
-
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 const textVariants = {
     hidden: {
         opacity: 0,
@@ -35,10 +30,6 @@ const textVariants = {
         },
     },
 };
-
-/* =========================================
-   Character Reveal
-========================================= */
 
 const SplitReveal = ({ text, className = '', delay = 0 }) => {
     return (
@@ -88,9 +79,79 @@ const SplitReveal = ({ text, className = '', delay = 0 }) => {
     );
 };
 
-/* =========================================
-   CTA
-========================================= */
+const ScrollWord = ({ children, index, total, strong = false, progress }) => {
+    const start = index / total;
+    const end = Math.min(start + 0.18, 1);
+
+    const opacity = useTransform(
+        progress,
+        [start, end],
+        [0.5, 1]
+    );
+
+    const color = useTransform(
+        progress,
+        [start, end],
+        ["rgba(13,36,97,0.25)", "rgba(13,36,97,1)"]
+    );
+
+    return (
+        <motion.span
+            style={{
+                opacity,
+                color,
+            }}
+            className={`mr-[0.25em] inline-block ${strong ? "font-bold" : ""
+                }`}
+        >
+            {children}
+        </motion.span>
+    );
+};
+
+const ScrollRevealParagraph = () => {
+    const containerRef = useRef(null);
+
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start 0.85", "end 0.45"],
+    });
+
+    const parts = [
+        {
+            text: "Looking for reliable polymers, chemicals, additives, or industrial materials? Talk to Resol Industries and let our team understand your requirement.",
+            strong: false,
+        },
+    ];
+
+    const words = parts.flatMap((part) =>
+        part.text.split(" ").map((word) => ({
+            word,
+            strong: part.strong,
+        }))
+    );
+
+    return (
+        <div
+            ref={containerRef}
+            className="mt-5 max-w-xl text-sm leading-7 text-gray-500 sm:text-base"
+        >
+            <p>
+                {words.map((item, index) => (
+                    <ScrollWord
+                        key={`${item.word}-${index}`}
+                        index={index}
+                        total={words.length}
+                        strong={item.strong}
+                        progress={scrollYProgress}
+                    >
+                        {item.word}
+                    </ScrollWord>
+                ))}
+            </p>
+        </div>
+    );
+};
 
 export default function CTASection() {
     return (
@@ -237,7 +298,8 @@ export default function CTASection() {
                             </h2>
 
                             {/* Description */}
-                            <motion.p
+                            <ScrollRevealParagraph />
+                            {/* <motion.p
                                 variants={textVariants}
                                 initial="hidden"
                                 whileInView="visible"
@@ -254,7 +316,7 @@ export default function CTASection() {
                                 additives, or industrial materials? Talk to
                                 Resol Industries and let our team understand
                                 your requirement.
-                            </motion.p>
+                            </motion.p> */}
 
                             {/* =========================================
                                 BUTTONS

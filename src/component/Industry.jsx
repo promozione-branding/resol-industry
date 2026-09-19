@@ -19,7 +19,7 @@ const industries = [
         title: "Packaging",
         description:
             "Durable and flexible resins for food, consumer, and industrial packaging solutions.",
-        isImageCard: false,
+        isImageCard: true,
         bgImage: "/industry3.webp",
     },
     {
@@ -37,7 +37,7 @@ const industries = [
         title: "Paints & Coatings",
         description:
             "Additives and fillers designed for consistent performance across paints and coating applications.",
-        isImageCard: false,
+        isImageCard: true,
         bgImage: "/footwear.webp",
     },
     {
@@ -46,7 +46,7 @@ const industries = [
         title: "PVC Pipes & Fittings",
         description:
             "Reliable polymer materials for manufacturing durable PVC pipes, fittings, profiles, and related products.",
-        isImageCard: false,
+        isImageCard: true,
         bgImage: "/pipe.webp",
     },
 ];

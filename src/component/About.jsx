@@ -1,19 +1,13 @@
 "use client";
-
-import React from "react";
-import { motion } from "framer-motion";
 import {
     Award,
     Building2,
     Factory,
 } from "lucide-react";
-
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 const ease = [0.22, 1, 0.36, 1];
 
-/* =========================================
-   Heading Word Animation
-   Different from CTA character animation
-========================================= */
 const WordReveal = ({ text = "", className = "", delay = 0 }) => {
     const words = text.split(" ");
 
@@ -66,28 +60,87 @@ const WordReveal = ({ text = "", className = "", delay = 0 }) => {
     );
 };
 
-/* =========================================
-   Fade Up
-========================================= */
+const ScrollWord = ({ children, index, total, strong = false, progress }) => {
+    const start = index / total;
+    const end = Math.min(start + 0.18, 1);
 
-const fadeUp = {
-    hidden: {
-        opacity: 0,
-        y: 30,
-    },
-    visible: {
-        opacity: 1,
-        y: 0,
-        transition: {
-            duration: 0.7,
-            ease,
-        },
-    },
+    const opacity = useTransform(
+        progress,
+        [start, end],
+        [0.5, 1]
+    );
+
+    const color = useTransform(
+        progress,
+        [start, end],
+        ["rgba(13,36,97,0.25)", "rgba(13,36,97,1)"]
+    );
+
+    return (
+        <motion.span
+            style={{
+                opacity,
+                color,
+            }}
+            className={`mr-[0.25em] inline-block ${strong ? "font-bold" : ""
+                }`}
+        >
+            {children}
+        </motion.span>
+    );
 };
 
-/* =========================================
-   About Us
-========================================= */
+const ScrollRevealParagraph = () => {
+    const containerRef = useRef(null);
+
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start 0.85", "end 0.45"],
+    });
+
+    const parts = [
+        {
+            text: "Resol Industries Ltd. (RIL)",
+            strong: true,
+        },
+        {
+            text: "is a prominent polymer products distributor founded in 2005, with its head office in New Delhi. We specialize in the import and wholesale distribution of a wide range of high-quality polymers and chemicals, including",
+            strong: false,
+        },
+        {
+            text: "PVC Resin, EVA, LLDPE, LDPE and various plasticizers.",
+            strong: true,
+        },
+    ];
+
+    const words = parts.flatMap((part) =>
+        part.text.split(" ").map((word) => ({
+            word,
+            strong: part.strong,
+        }))
+    );
+
+    return (
+        <div
+            ref={containerRef}
+            className="max-w-2xl text-sm font-normal leading-relaxed sm:text-base"
+        >
+            <p>
+                {words.map((item, index) => (
+                    <ScrollWord
+                        key={`${item.word}-${index}`}
+                        index={index}
+                        total={words.length}
+                        strong={item.strong}
+                        progress={scrollYProgress}
+                    >
+                        {item.word}
+                    </ScrollWord>
+                ))}
+            </p>
+        </div>
+    );
+};
 
 export default function AboutUs() {
     return (
@@ -246,23 +299,7 @@ export default function AboutUs() {
 
                         {/* Content */}
 
-                        <motion.div
-                            variants={fadeUp}
-                            className="max-w-2xl space-y-4 text-sm font-normal leading-relaxed text-[#0d2461]/80 sm:text-base"
-                        >
-                            <p>
-                                <strong className="font-bold text-[#0d2461]">
-                                    Resol Industries Ltd. (RIL)
-                                </strong>{" "}
-                                is a prominent polymer products distributor founded in
-                                2005, with its head office in New Delhi. We specialize
-                                in the import and wholesale distribution of a wide range
-                                of high-quality polymers and chemicals, including{" "}
-                                <strong className="font-semibold text-[#0d2461]">
-                                    PVC Resin, EVA, LLDPE, LDPE and various plasticizers.
-                                </strong>
-                            </p>
-                        </motion.div>
+                        <ScrollRevealParagraph />
 
                         {/* =====================================================
                             STATS
@@ -375,7 +412,7 @@ export default function AboutUs() {
                                     <div>
                                         <motion.h3
                                             initial={{
-                                                opacity: 0,
+                                                opacity: 0, 
                                                 scale: 0.7,
                                             }}
                                             whileInView={{
